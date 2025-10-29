@@ -1,148 +1,569 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-export const LandingPage: React.FC = () => (
-  <div className="flex flex-col min-h-screen font-sans text-grayDark">
+export const LandingPage: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
-    {/* Hero Section con fondo */}
-    <section className="relative h-[80vh] flex flex-col items-center justify-center text-center text-white">
-      <img
-        src="https://a.cdn-hotels.com/gdcs/production66/d1089/8602ddc0-da82-4e39-b640-a623012f49a6.jpg" 
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black/50"></div> {/* overlay oscuro */}
-      <div className="relative z-10 px-6">
-        <h1 className="text-5xl md:text-6xl font-bold mb-4">Bienvenido a SpaceShare</h1>
-        <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-          Ofrece o renta espacios temporales de manera fácil, rápida y segura. Encuentra el lugar perfecto para tus proyectos en Cancún.
-        </p>
-        <div className="flex justify-center space-x-4">
-          <Link
-            to="/owner"
-            className="bg-secondary hover:bg-[#00917f] px-6 py-3 rounded text-lg font-semibold transition"
-          >
-            Soy Arrendador
-          </Link>
-          <Link
-            to="/renter"
-            className="bg-accent hover:bg-[#e05555] px-6 py-3 rounded text-lg font-semibold transition"
-          >
-            Soy Rentador
-          </Link>
-        </div>
-      </div>
-    </section>
+  useEffect(() => {
+    setIsVisible(true);
+    
+    // Auto-rotate testimonials
+    const interval = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % 3);
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
-    {/* Beneficios / Características */}
-    <section className="bg-grayLight py-20 px-6">
-      <h2 className="text-3xl font-bold text-center mb-12">¿Por qué elegir SpaceShare?</h2>
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div className="bg-white p-6 rounded shadow hover:shadow-lg transition">
-          <div className="h-24 w-24 bg-secondary rounded-full mb-4 flex items-center justify-center text-white text-2xl font-bold">🏠</div>
-          <h3 className="font-semibold text-xl mb-2">Fácil de Usar</h3>
-          <p className="text-grayMedium">Publica o encuentra espacios en minutos sin complicaciones técnicas.</p>
-        </div>
-        <div className="bg-white p-6 rounded shadow hover:shadow-lg transition">
-          <div className="h-24 w-24 bg-highlight rounded-full mb-4 flex items-center justify-center text-white text-2xl font-bold">💰</div>
-          <h3 className="font-semibold text-xl mb-2">Transacciones Seguras</h3>
-          <p className="text-grayMedium">Pagos confiables y temporales que te dan tranquilidad en cada renta.</p>
-        </div>
-        <div className="bg-white p-6 rounded shadow hover:shadow-lg transition">
-          <div className="h-24 w-24 bg-accent rounded-full mb-4 flex items-center justify-center text-white text-2xl font-bold">📍</div>
-          <h3 className="font-semibold text-xl mb-2">Ubicación Ideal</h3>
-          <p className="text-grayMedium">Explora espacios disponibles en Cancún y elige el que mejor se adapte a ti.</p>
-        </div>
-      </div>
-    </section>
+  const testimonials = [
+    {
+      text: "Gracias a SpaceShare encontré el lugar perfecto para grabar mi videoclip sin complicaciones. La plataforma es súper intuitiva y los propietarios muy profesionales.",
+      author: "Carlos M.",
+      role: "Director de Video",
+      rating: 5,
+      image: "/src/assets/leyva.jpeg"
+    },
+    {
+      text: "Rentar mi cochera fue muy fácil y rápido, totalmente confiable. Ahora genero ingresos pasivos mientras no uso mi espacio. ¡Increíble!",
+      author: "Ana P.",
+      role: "Propietaria",
+      rating: 5,
+      image: "/src/assets/diego.jpeg"
+    },
+    {
+      text: "Los espacios son de calidad y la plataforma muy intuitiva. He rentado varios lugares para mis eventos y siempre una experiencia 10/10.",
+      author: "Luis G.",
+      role: "Organizador de Eventos",
+      rating: 5,
+      image: "/src/assets/coronado.jpeg"
+    }
+  ];
 
-    {/* Cómo funciona */}
-    <section className="py-20 px-6">
-      <h2 className="text-3xl font-bold text-center mb-12">Cómo funciona</h2>
-      <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto text-center">
-        <div>
-          <div className="h-40 w-full bg-gray-300 rounded mb-4"></div>
-          <h3 className="font-semibold text-xl mb-2">1. Publica tu espacio</h3>
-          <p className="text-grayMedium">Agrega detalles de tu lugar y disponibilidad en pocos pasos.</p>
-        </div>
-        <div>
-          <div className="h-40 w-full bg-gray-300 rounded mb-4"></div>
-          <h3 className="font-semibold text-xl mb-2">2. Encuentra tu espacio</h3>
-          <p className="text-grayMedium">Busca espacios según tus necesidades y fechas disponibles.</p>
-        </div>
-        <div>
-          <div className="h-40 w-full bg-gray-300 rounded mb-4"></div>
-          <h3 className="font-semibold text-xl mb-2">3. Reserva y disfruta</h3>
-          <p className="text-grayMedium">Realiza la renta de forma segura y disfruta de tu espacio temporal.</p>
-        </div>
-      </div>
-    </section>
+  const stats = [
+    { number: "500+", label: "Espacios Activos" },
+    { number: "1,200+", label: "Usuarios Registrados" },
+    { number: "4.8/5", label: "Calificación Promedio" },
+    { number: "98%", label: "Tasa de Satisfacción" }
+  ];
 
-    {/* Espacios destacados */}
-    <section className="bg-grayLight py-20 px-6">
-      <h2 className="text-3xl font-bold text-center mb-12">Espacios Destacados</h2>
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div className="bg-white rounded shadow overflow-hidden hover:shadow-lg transition">
-          <div className="h-48 bg-gray-300"></div>
-          <div className="p-6">
-            <h3 className="font-semibold text-xl mb-2">Cocheras en Cancún Centro</h3>
-            <p className="text-grayMedium mb-2">Seguras y accesibles para tu vehículo.</p>
-            <p className="font-bold text-secondary">$150 MXN / hora</p>
+  const features = [
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      title: "Publicación Instantánea",
+      description: "Publica tu espacio en menos de 5 minutos con nuestro sistema intuitivo y eficiente"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      ),
+      title: "Seguridad Garantizada",
+      description: "Pagos protegidos y verificación de usuarios para garantizar transacciones seguras"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      title: "Monetización Efectiva",
+      description: "Genera ingresos pasivos optimizando el uso de tus espacios disponibles"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+      title: "Ubicaciones Estratégicas",
+      description: "Accede a espacios en las zonas más demandadas y estratégicas de Cancún"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      title: "Confirmación Inmediata",
+      description: "Sistema de reservación instantánea sin tiempos de espera ni procesos complejos"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      ),
+      title: "Búsqueda Avanzada",
+      description: "Filtros especializados para encontrar exactamente el espacio que necesitas"
+    }
+  ];
+
+  const howItWorks = [
+    {
+      step: "1",
+      title: "Crea tu cuenta gratis",
+      description: "Regístrate en menos de 2 minutos y accede a todas las funcionalidades",
+      image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=400"
+    },
+    {
+      step: "2",
+      title: "Publica o busca espacios",
+      description: "Sube tu espacio con fotos o explora nuestra amplia variedad de opciones",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400"
+    },
+    {
+      step: "3",
+      title: "Conecta y reserva",
+      description: "Comunícate directamente y confirma tu reserva de forma segura e instantánea",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400"
+    }
+  ];
+
+  const categories = [
+    { 
+      name: "Cocheras", 
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+        </svg>
+      ),
+      count: "150+", 
+      price: "Desde $100/hora"
+    },
+    { 
+      name: "Salones", 
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      ),
+      count: "80+", 
+      price: "Desde $400/hora"
+    },
+    { 
+      name: "Oficinas", 
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+      count: "120+", 
+      price: "Desde $250/hora"
+    },
+    { 
+      name: "Estudios", 
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+      ),
+      count: "60+", 
+      price: "Desde $300/hora"
+    }
+  ];
+
+  return (
+    <div className="flex flex-col min-h-screen bg-white">
+      {/* Hero Section - Profesional y Corporativo */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        {/* Background Image */}
+        <div className="absolute inset-0 opacity-20">
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920"
+            className="w-full h-full object-cover"
+            alt="Cancún cityscape"
+          />
+        </div>
+
+        {/* Content */}
+        <div className={`relative z-10 max-w-7xl mx-auto px-6 py-20 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="inline-block mb-6 px-6 py-2 bg-primary/10 backdrop-blur-sm rounded-lg border border-primary/20">
+            <span className="text-primary font-semibold">Plataforma líder en gestión de espacios</span>
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+            Conectamos espacios
+            <br />
+            <span className="text-primary">
+              con oportunidades
+            </span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Solución integral para la gestión y renta de espacios temporales en Cancún.
+            <br />
+            <strong className="text-white">Profesional. Confiable. Eficiente.</strong>
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+            <Link
+              to="/register"
+              className="group relative px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            >
+              <span className="relative z-10 flex items-center justify-center">
+                Comenzar ahora
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </Link>
+            
+            <Link
+              to="/spaces"
+              className="px-8 py-4 bg-transparent text-white rounded-lg font-semibold text-lg border-2 border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300"
+            >
+              Explorar espacios
+            </Link>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <div 
+                key={index}
+                className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-all duration-300"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.number}</div>
+                <div className="text-gray-400 text-sm uppercase tracking-wide">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="bg-white rounded shadow overflow-hidden hover:shadow-lg transition">
-          <div className="h-48 bg-gray-300"></div>
-          <div className="p-6">
-            <h3 className="font-semibold text-xl mb-2">Salones para eventos</h3>
-            <p className="text-grayMedium mb-2">Perfectos para reuniones o talleres.</p>
-            <p className="font-bold text-secondary">$500 MXN / hora</p>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <svg className="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </section>
+
+      {/* Categorías - Acceso rápido */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Categorías de espacios
+            </h2>
+            <p className="text-xl text-gray-600">
+              Descubre las opciones disponibles en nuestra plataforma
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {categories.map((category, index) => (
+              <Link
+                key={index}
+                to="/spaces"
+                className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+              >
+                <div className="p-8">
+                  <div className="text-primary mb-4">{category.icon}</div>
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900">{category.name}</h3>
+                  <p className="text-gray-600 mb-1 font-semibold">{category.count} disponibles</p>
+                  <p className="text-sm text-gray-500">{category.price}</p>
+                  <div className="mt-4 flex items-center text-sm font-semibold text-primary">
+                    Ver más
+                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
-        <div className="bg-white rounded shadow overflow-hidden hover:shadow-lg transition">
-          <div className="h-48 bg-gray-300"></div>
-          <div className="p-6">
-            <h3 className="font-semibold text-xl mb-2">Paredes para publicidad</h3>
-            <p className="text-grayMedium mb-2">Ubicaciones estratégicas en Cancún.</p>
-            <p className="font-bold text-secondary">$300 MXN / día</p>
+      </section>
+
+      {/* Features - Beneficios Clave */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Ventajas competitivas
+            </h2>
+            <p className="text-xl text-gray-600">
+              Características que nos diferencian en el mercado
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-lg p-8 border border-gray-200 hover:border-primary hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-primary mb-4">{feature.icon}</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Testimonios */}
-    <section className="py-20 px-6">
-      <h2 className="text-3xl font-bold text-center mb-12">Lo que dicen nuestros usuarios</h2>
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
-        <div className="bg-white p-6 rounded shadow hover:shadow-lg transition">
-          <p className="text-grayMedium mb-4">"Gracias a SpaceShare encontré el lugar perfecto para grabar mi videoclip sin complicaciones."</p>
-          <h3 className="font-semibold text-lg">- Carlos M.</h3>
-        </div>
-        <div className="bg-white p-6 rounded shadow hover:shadow-lg transition">
-          <p className="text-grayMedium mb-4">"Rentar mi cochera fue muy fácil y rápido, totalmente confiable."</p>
-          <h3 className="font-semibold text-lg">- Ana P.</h3>
-        </div>
-        <div className="bg-white p-6 rounded shadow hover:shadow-lg transition">
-          <p className="text-grayMedium mb-4">"Los espacios son de calidad y la plataforma muy intuitiva."</p>
-          <h3 className="font-semibold text-lg">- Luis G.</h3>
-        </div>
-      </div>
-    </section>
+      {/* How it Works - Proceso simple */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Proceso de inicio
+            </h2>
+            <p className="text-xl text-gray-600">
+              Tres pasos para comenzar a utilizar la plataforma
+            </p>
+          </div>
 
-    {/* CTA final */}
-    <section className="py-20 px-6 flex flex-col items-center text-center bg-primary text-white">
-      <h2 className="text-3xl font-bold mb-6">¡Empieza a compartir o rentar hoy!</h2>
-      <div className="flex space-x-4">
-        <Link
-          to="/owner"
-          className="bg-secondary hover:bg-[#00917f] px-8 py-4 rounded text-lg font-semibold transition"
-        >
-          Publica tu espacio
-        </Link>
-        <Link
-          to="/renter"
-          className="bg-accent hover:bg-[#e05555] px-8 py-4 rounded text-lg font-semibold transition"
-        >
-          Encuentra un espacio
-        </Link>
-      </div>
-    </section>
-  </div>
-);
+          <div className="grid md:grid-cols-3 gap-8">
+            {howItWorks.map((item, index) => (
+              <div key={index} className="relative">
+                {/* Connector line */}
+                {index < howItWorks.length - 1 && (
+                  <div className="hidden md:block absolute top-1/4 left-[60%] w-[80%] h-0.5 bg-gray-300 z-0"></div>
+                )}
+                
+                <div className="relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 z-10 border border-gray-100">
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden bg-gray-100">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 left-4 w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-xl font-bold text-white">{item.step}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/register"
+              className="inline-block px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300"
+            >
+              Crear cuenta gratuita
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials - Prueba social */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Testimonios de clientes
+            </h2>
+            <p className="text-xl text-gray-600">
+              Experiencias de usuarios de la plataforma
+            </p>
+          </div>
+
+          {/* Testimonial Carousel */}
+          <div className="relative max-w-4xl mx-auto">
+            <div className="bg-gray-50 rounded-lg p-12 shadow-md border border-gray-200">
+              <div className="text-center">
+                {/* Stars */}
+                <div className="flex justify-center gap-1 mb-6">
+                  {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                  "{testimonials[activeTestimonial].text}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center justify-center gap-4">
+                  <img 
+                    src={testimonials[activeTestimonial].image} 
+                    alt={testimonials[activeTestimonial].author}
+                    className="w-14 h-14 rounded-full border-2 border-gray-300 shadow-md"
+                  />
+                  <div className="text-left">
+                    <p className="font-bold text-gray-900">{testimonials[activeTestimonial].author}</p>
+                    <p className="text-gray-600 text-sm">{testimonials[activeTestimonial].role}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Indicators */}
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveTestimonial(index)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all ${
+                    index === activeTestimonial ? "bg-primary w-8" : "bg-gray-300"
+                  }`}
+                  aria-label={`Ver testimonio ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Trust badges */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
+            <div className="text-center p-6 bg-white border border-gray-200 rounded-lg">
+              <div className="w-12 h-12 mx-auto mb-3 text-primary">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <p className="font-semibold text-gray-900">Verificación</p>
+              <p className="text-sm text-gray-600">Usuarios verificados</p>
+            </div>
+            <div className="text-center p-6 bg-white border border-gray-200 rounded-lg">
+              <div className="w-12 h-12 mx-auto mb-3 text-primary">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <p className="font-semibold text-gray-900">Seguridad</p>
+              <p className="text-sm text-gray-600">Pagos protegidos</p>
+            </div>
+            <div className="text-center p-6 bg-white border border-gray-200 rounded-lg">
+              <div className="w-12 h-12 mx-auto mb-3 text-primary">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <p className="font-semibold text-gray-900">Rapidez</p>
+              <p className="text-sm text-gray-600">Respuesta inmediata</p>
+            </div>
+            <div className="text-center p-6 bg-white border border-gray-200 rounded-lg">
+              <div className="w-12 h-12 mx-auto mb-3 text-primary">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p className="font-semibold text-gray-900">Confiabilidad</p>
+              <p className="text-sm text-gray-600">98% satisfacción</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="relative py-20 px-6 overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        {/* Background */}
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920"
+            className="w-full h-full object-cover"
+            alt="Office space"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Comience a utilizar la plataforma
+          </h2>
+          
+          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+            Únase a más de 1,200 usuarios que ya están optimizando sus espacios
+            <br />
+            o encontrando ubicaciones ideales para sus necesidades
+          </p>
+
+          {/* Dual CTA */}
+          <div className="flex flex-col md:flex-row justify-center gap-6 mb-8">
+            <Link
+              to="/register"
+              className="px-10 py-4 bg-primary text-white rounded-lg font-semibold text-lg shadow-xl hover:bg-primary/90 transition-all duration-300"
+            >
+              Crear cuenta
+            </Link>
+            
+            <Link
+              to="/spaces"
+              className="px-10 py-4 bg-white text-gray-900 rounded-lg font-semibold text-lg shadow-xl hover:bg-gray-100 transition-all duration-300"
+            >
+              Ver espacios disponibles
+            </Link>
+          </div>
+
+          {/* Guarantee */}
+          <div className="flex items-center justify-center gap-2 text-gray-400">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span className="text-sm">Registro gratuito • Sin compromiso inicial</span>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Preguntas frecuentes
+            </h2>
+            <p className="text-xl text-gray-600">
+              Información relevante sobre el funcionamiento de la plataforma
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "¿Cuál es el costo de utilizar la plataforma?",
+                a: "El registro y publicación de espacios es gratuito. Se aplica una comisión únicamente cuando se concreta una transacción de renta."
+              },
+              {
+                q: "¿Cómo se procesan los pagos?",
+                a: "Los pagos se procesan de forma segura a través de nuestra plataforma. Los fondos se liberan al propietario una vez confirmada la prestación del servicio."
+              },
+              {
+                q: "¿Existe una política de cancelación?",
+                a: "Sí, contamos con políticas de cancelación flexibles. Se recomienda consultar los términos específicos de cada espacio antes de realizar una reservación."
+              },
+              {
+                q: "¿Cómo se verifica la identidad de los usuarios?",
+                a: "Todos los usuarios deben completar un proceso de verificación de identidad para garantizar la seguridad y confiabilidad de las transacciones."
+              },
+              {
+                q: "¿Qué tipos de espacios están disponibles?",
+                a: "La plataforma ofrece una amplia variedad de espacios: cocheras, oficinas, salones para eventos, estudios, áreas de almacenamiento, entre otros."
+              }
+            ].map((faq, index) => (
+              <details key={index} className="group bg-gray-50 rounded-lg p-6 border border-gray-200 hover:border-primary transition-all cursor-pointer">
+                <summary className="flex items-center justify-between font-semibold text-gray-900 cursor-pointer list-none">
+                  <span>{faq.q}</span>
+                  <svg className="w-5 h-5 text-primary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-4 text-gray-600 leading-relaxed">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
