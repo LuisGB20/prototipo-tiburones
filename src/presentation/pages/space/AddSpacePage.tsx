@@ -160,7 +160,7 @@ export const AddSpacePage: React.FC = () => {
                         {/* Stats Card */}
                         <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-100">
                             <h3 className="text-lg font-bold text-gray-900 mb-4">
-                                Estadísticas de SpaceShare
+                                Estadísticas de MeXpace
                             </h3>
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between">

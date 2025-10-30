@@ -45,12 +45,12 @@ export const Header: React.FC = () => {
             <div className="relative">
               <img 
                 src="/src/assets/logo_SpaceShare.png" 
-                alt="SpaceShare Logo" 
+                alt="MeXpace Logo" 
                 className="w-10 h-10 md:w-12 md:h-12 object-contain transition-all duration-300 group-hover:scale-110 drop-shadow-lg" 
               />
             </div>
             <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent group-hover:from-secondary group-hover:via-primary group-hover:to-secondary transition-all duration-300">
-              SpaceShare
+              MeXpace
             </span>
           </Link>
 

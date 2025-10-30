@@ -18,7 +18,7 @@ export const LandingPage: React.FC = () => {
 
   const testimonials = [
     {
-      text: "Gracias a SpaceShare encontré el lugar perfecto para grabar mi videoclip sin complicaciones. La plataforma es súper intuitiva y los propietarios muy profesionales.",
+      text: "Gracias a MeXpace encontré el lugar perfecto para grabar mi videoclip sin complicaciones. La plataforma es súper intuitiva y los propietarios muy profesionales.",
       author: "Carlos M.",
       role: "Director de Video",
       rating: 5,

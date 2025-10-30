@@ -411,7 +411,7 @@ export const SpaceDetailPage: React.FC = () => {
                                 {/* Información adicional */}
                                 <div className="mt-6 pt-6 border-t border-gray-200">
                                     <p className="text-xs text-gray-500 text-center">
-                                        Al reservar, aceptas los términos y condiciones de SpaceShare
+                                        Al reservar, aceptas los términos y condiciones de MeXpace
                                     </p>
                                 </div>
                             </div>

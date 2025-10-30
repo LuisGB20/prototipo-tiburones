@@ -15,12 +15,12 @@ export const Footer: React.FC = () => {
               <div className="relative">
                 <img 
                   src="/src/assets/logo_SpaceShare.png" 
-                  alt="SpaceShare Logo" 
+                  alt="MeXpace Logo" 
                   className="w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110 drop-shadow-lg" 
                 />
               </div>
               <span className="text-xl font-bold text-white group-hover:text-secondary transition-colors duration-300">
-                SpaceShare
+                MeXpace
               </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
@@ -190,8 +190,8 @@ export const Footer: React.FC = () => {
                 <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:contacto@spaceshare.com" className="hover:text-white transition-colors">
-                  contacto@spaceshare.com
+                <a href="mailto:contacto@mexpace.com" className="hover:text-white transition-colors">
+                  contacto@mexpace.com
                 </a>
               </div>
               <div className="flex items-center space-x-2 text-sm">
@@ -208,7 +208,7 @@ export const Footer: React.FC = () => {
         <div className="pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400">
-              &copy; {currentYear} SpaceShare Cancún. Todos los derechos reservados.
+              &copy; {currentYear} MeXpace Cancún. Todos los derechos reservados.
             </p>
             <div className="flex items-center space-x-6">
               <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">

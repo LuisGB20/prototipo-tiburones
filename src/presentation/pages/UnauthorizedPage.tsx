@@ -76,7 +76,7 @@ export const UnauthorizedPage: React.FC = () => {
                   <span>¿Por qué veo esto?</span>
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Has intentado acceder a una sección de SpaceShare que requiere un tipo de cuenta diferente al tuyo. Las funcionalidades de propietarios y rentadores están separadas para brindarte una mejor experiencia.
+                  Has intentado acceder a una sección de MeXpace que requiere un tipo de cuenta diferente al tuyo. Las funcionalidades de propietarios y rentadores están separadas para brindarte una mejor experiencia.
                 </p>
               </div>
 
