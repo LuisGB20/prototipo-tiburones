@@ -58,13 +58,13 @@ export const RegisterPage: React.FC = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <img
           src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1996&auto=format&fit=crop"
-          alt="SpaceShare"
+          alt="MeXpace"
           className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
         />
         <div className="relative z-10 flex flex-col items-center justify-center text-white p-12 text-center">
           <div className="max-w-lg">
             <h2 className="text-4xl font-bold mb-6">
-              Comienza tu viaje con SpaceShare
+              Comienza tu viaje con MeXpace
             </h2>
             <p className="text-lg text-white/90 mb-8">
               Crea tu cuenta y accede a cientos de espacios disponibles o publica el tuyo para empezar a ganar.
@@ -117,16 +117,7 @@ export const RegisterPage: React.FC = () => {
         <div className="w-full max-w-md">
           {/* Logo y Header */}
           <div className="text-center mb-8">
-            <Link to="/" className="inline-flex items-center space-x-3 group mb-4">
-              <img 
-                src="/src/assets/logo_SpaceShare.png" 
-                alt="SpaceShare" 
-                className="w-12 h-12 group-hover:scale-110 transition-transform duration-300"
-              />
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                SpaceShare
-              </span>
-            </Link>
+           
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Crea tu cuenta
             </h1>
@@ -151,7 +142,7 @@ export const RegisterPage: React.FC = () => {
               {/* Selector de Rol - Destacado */}
               <div className="space-y-2">
                 <label className="block text-sm font-semibold text-gray-700 mb-3">
-                  ¿Cómo quieres usar SpaceShare?
+                  ¿Cómo quieres usar MeXpace?
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   <button

@@ -1,4 +1,4 @@
-# Sistema de Autenticación y Protección de Rutas - SpaceShare
+# Sistema de Autenticación y Protección de Rutas - MeXpace
 
 ## 📋 Resumen de la Implementación
 

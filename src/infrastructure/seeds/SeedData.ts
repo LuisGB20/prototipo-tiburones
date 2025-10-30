@@ -37,84 +37,84 @@ export function getSeedData() {
         makeUser({
             id: "owner-juan",
             name: "Juan Pérez Hernández",
-            email: "juan.perez@spaceshare.mx",
+            email: "juan.perez@mexpace.mx",
             role: "owner",
             rating: 4.8
         }),
         makeUser({
             id: "owner-maria",
             name: "María López García",
-            email: "maria.lopez@spaceshare.mx",
+            email: "maria.lopez@mexpace.mx",
             role: "owner",
             rating: 4.9
         }),
         makeUser({
             id: "owner-roberto",
             name: "Roberto Sánchez Vega",
-            email: "roberto.sanchez@spaceshare.mx",
+            email: "roberto.sanchez@mexpace.mx",
             role: "owner",
             rating: 4.7
         }),
         makeUser({
             id: "owner-laura",
             name: "Laura Fernández Cruz",
-            email: "laura.fernandez@spaceshare.mx",
+            email: "laura.fernandez@mexpace.mx",
             role: "owner",
             rating: 4.6
         }),
         makeUser({
             id: "owner-diego",
             name: "Diego Ramírez Torres",
-            email: "diego.ramirez@spaceshare.mx",
+            email: "diego.ramirez@mexpace.mx",
             role: "owner",
             rating: 4.8
         }),
         makeUser({
             id: "owner-carmen",
             name: "Carmen Vargas Moreno",
-            email: "carmen.vargas@spaceshare.mx",
+            email: "carmen.vargas@mexpace.mx",
             role: "owner",
             rating: 4.9
         }),
         makeUser({
             id: "owner-ricardo",
             name: "Ricardo Mejía Castro",
-            email: "ricardo.mejia@spaceshare.mx",
+            email: "ricardo.mejia@mexpace.mx",
             role: "owner",
             rating: 4.7
         }),
         makeUser({
             id: "owner-patricia",
             name: "Patricia Rojas Delgado",
-            email: "patricia.rojas@spaceshare.mx",
+            email: "patricia.rojas@mexpace.mx",
             role: "owner",
             rating: 4.8
         }),
         makeUser({
             id: "owner-fernando",
             name: "Fernando Ortiz Salas",
-            email: "fernando.ortiz@spaceshare.mx",
+            email: "fernando.ortiz@mexpace.mx",
             role: "owner",
             rating: 4.6
         }),
         makeUser({
             id: "owner-gabriela",
             name: "Gabriela Núñez Jiménez",
-            email: "gabriela.nunez@spaceshare.mx",
+            email: "gabriela.nunez@mexpace.mx",
             role: "owner",
             rating: 4.9
         }),
         makeUser({
             id: "owner-alejandro",
             name: "Alejandro Mendoza Ríos",
-            email: "alejandro.mendoza@spaceshare.mx",
+            email: "alejandro.mendoza@mexpace.mx",
             role: "owner",
             rating: 4.7
         }),
         makeUser({
             id: "owner-valeria",
             name: "Valeria Castillo Aguilar",
-            email: "valeria.castillo@spaceshare.mx",
+            email: "valeria.castillo@mexpace.mx",
             role: "owner",
             rating: 4.8
         }),
@@ -279,11 +279,11 @@ export function getSeedData() {
             price: { amount: 1200, currency: "MXN" },
             available: true,
             images: [
-                "https://images.unsplash.com/photo-1519167758481-83f29da8c8d0?w=600",
+                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600",
                 "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600",
-                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600"
+                
             ],
-        }),
+        }), 
         makeSpace({
             id: "space-hall-3",
             ownerId: "owner-roberto",
@@ -291,7 +291,7 @@ export function getSeedData() {
             description: "Espacio íntimo y elegante para 30 personas. Ideal para lanzamientos de producto, showcases, pop-up stores o presentaciones exclusivas. Iluminación profesional y sistema de audio incluido.",
             type: "hall",
             location: { city: "Cancún", address: "Calle Pavo 15, Supermanzana 17" },
-            price: { amount: 600, currency: "MXN" },
+            price: { amount: 150, currency: "MXN" },
             available: true,
             images: [
                 "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600",
@@ -336,7 +336,7 @@ export function getSeedData() {
             description: "Sala de juntas equipada para 12 personas con vista panorámica. Incluye pantalla grande, sistema de videoconferencia, pizarra interactiva y servicio de café. Ubicación prestigiosa para reuniones importantes.",
             type: "office",
             location: { city: "Cancún", address: "Torre Corporativa, Blvd. Kukulcán Km 12" },
-            price: { amount: 500, currency: "MXN" },
+            price: { amount: 200, currency: "MXN" },
             available: true,
             images: [
                 "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600",
@@ -385,7 +385,7 @@ export function getSeedData() {
             price: { amount: 650, currency: "MXN" },
             available: true,
             images: [
-                "https://images.unsplash.com/photo-1542452255191-93a28c90df44?w=600",
+                "https://th.bing.com/th/id/R.307419a6f789470090f45694286b96d4?rik=VqbERGxP%2bDiAqg&riu=http%3a%2f%2fwww.digitalcinema.com.mx%2fimg%2f01-video-production-cancun-mexico.jpg&ehk=39KBTwvVgks2neGDVKPc6t1sbSFvE7kX7WqpDo1hVEk%3d&risl=&pid=ImgRaw&r=0",
                 "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600"
             ],
         }),
@@ -433,48 +433,47 @@ export function getSeedData() {
             ],
         }),
 
-        // HABITACIONES
+        // LOCALES COMERCIALES POP-UP
         makeSpace({
-            id: "space-room-1",
+            id: "space-shop-1",
             ownerId: "owner-patricia",
-            title: "Habitación privada con baño - SM 28",
-            description: "Habitación cómoda y luminosa con cama queen size, clóset, escritorio y baño privado. Acceso a cocina y áreas comunes. Internet de alta velocidad incluido. Ideal para estudiantes, profesionistas en viaje o estancias cortas.",
-            type: "room",
-            location: { city: "Cancún", address: "Calle Jacarandas 56, Supermanzana 28" },
-            price: { amount: 400, currency: "MXN" },
+            title: "Local comercial pop-up en plaza - SM 28",
+            description: "Local de 25m² en plaza comercial disponible por días o semanas. Perfecto para pop-up stores, pruebas de concepto, ventas temporales o eventos especiales. Incluye mostrador, iluminación y conexión eléctrica. Alta visibilidad y tráfico peatonal.",
+            type: "shop",
+            location: { city: "Cancún", address: "Plaza Bonita, Av. Cobá 510" },
+            price: { amount: 600, currency: "MXN" },
             available: true,
             images: [
-                "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600",
-                "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+                "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600",
+                "https://images.unsplash.com/photo-1555529902-5261145633bf?w=600"
             ],
         }),
         makeSpace({
-            id: "space-room-2",
+            id: "space-shop-2",
             ownerId: "owner-fernando",
-            title: "Suite amueblada estilo hotel - Zona Hotelera",
-            description: "Suite completamente amueblada tipo hotel con kitchenette, baño completo, balcón con vista parcial al mar, aire acondicionado y TV. Acceso a piscina y gimnasio del edificio. Servicio de limpieza disponible.",
-            type: "room",
-            location: { city: "Cancún", address: "Boulevard Kukulcán Km 7, Zona Hotelera" },
-            price: { amount: 850, currency: "MXN" },
+            title: "Kiosko temporal en Zona Hotelera",
+            description: "Kiosko de 12m² en área de alto tráfico turístico. Ideal para venta de artesanías, souvenirs, tours, fotografía o promociones temporales. Incluye mesa plegable, toldo y conexión eléctrica. Ubicación estratégica cerca de playas principales.",
+            type: "shop",
+            location: { city: "Cancún", address: "Boulevard Kukulcán Km 9.5, Zona Hotelera" },
+            price: { amount: 450, currency: "MXN" },
             available: true,
             images: [
-                "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600",
-                "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600",
-                "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+                "https://images.unsplash.com/photo-1555529902-5261145633bf?w=600",
+                "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600"
             ],
         }),
         makeSpace({
-            id: "space-room-3",
+            id: "space-shop-3",
             ownerId: "owner-gabriela",
-            title: "Cuarto tipo loft - Centro",
-            description: "Espacio tipo loft moderno con techo alto, grandes ventanales y diseño minimalista. Incluye área de trabajo, baño completo y pequeña cocina. WiFi 100mb, aire acondicionado y estacionamiento.",
-            type: "room",
-            location: { city: "Cancún", address: "Av. Nader 125, Centro" },
-            price: { amount: 550, currency: "MXN" },
+            title: "Espacio comercial en mercado artesanal",
+            description: "Stand de 15m² en mercado artesanal con alta afluencia de turistas y locales. Perfecto para venta de artesanías, productos orgánicos, joyería o arte local. Incluye mesa, mantel y acceso a baños compartidos.",
+            type: "shop",
+            location: { city: "Cancún", address: "Mercado 28, Centro" },
+            price: { amount: 350, currency: "MXN" },
             available: true,
             images: [
-                "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600",
-                "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600"
+                "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600",
+                "https://images.unsplash.com/photo-1555529902-5261145633bf?w=600"
             ],
         }),
 
@@ -529,7 +528,7 @@ export function getSeedData() {
             description: "Terraza espectacular de 150m² en el último piso con vista panorámica al mar Caribe. Perfecta para eventos privados, fiestas, sesiones fotográficas o cenas románticas. Incluye mesas, sillas, iluminación ambiental y sistema de audio.",
             type: "terrace",
             location: { city: "Cancún", address: "Boulevard Kukulcán Km 10.5, Zona Hotelera" },
-            price: { amount: 2500, currency: "MXN" },
+            price: { amount: 1500, currency: "MXN" },
             available: true,
             images: [
                 "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600",
@@ -560,7 +559,7 @@ export function getSeedData() {
             description: "Azotea de 120m² en edificio céntrico con vista a la ciudad. Cuenta con barra, área lounge, baño y cocina equipada. Perfecta para fiestas, eventos corporativos, lanzamientos de producto o after office. Capacidad 80 personas.",
             type: "rooftop",
             location: { city: "Cancún", address: "Av. Yaxchilán 156, Centro" },
-            price: { amount: 1800, currency: "MXN" },
+            price: { amount: 1300, currency: "MXN" },
             available: true,
             images: [
                 "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600",
@@ -590,7 +589,7 @@ export function getSeedData() {
             description: "Jardín privado de 150m² con alberca pequeña (4x6m), área verde, palapas, asador y baño completo. Perfecto para reuniones familiares, pool parties o celebraciones privadas. Estacionamiento para 5 autos.",
             type: "garden",
             location: { city: "Cancún", address: "Residencial Cumbres, SM 50" },
-            price: { amount: 2000, currency: "MXN" },
+            price: { amount: 1000, currency: "MXN" },
             available: true,
             images: [
                 "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600",
@@ -627,9 +626,9 @@ export function getSeedData() {
             ],
         }),
 
-        // LOCALES COMERCIALES
+        // LOCALES COMERCIALES TRADICIONALES
         makeSpace({
-            id: "space-shop-1",
+            id: "space-shop-4",
             ownerId: "owner-carmen",
             title: "Local comercial 50m² - Plaza comercial",
             description: "Local en plaza con alta afluencia de público. Incluye baño, área de exhibición con aparadores de cristal, bodega pequeña y conexiones eléctricas. Ideal para boutique, tienda de ropa, joyería o productos artesanales.",
@@ -643,13 +642,13 @@ export function getSeedData() {
             ],
         }),
         makeSpace({
-            id: "space-shop-2",
-            ownerId: "owner-patricia",
-            title: "Pop-up store en centro comercial - 30m²",
-            description: "Espacio tipo pop-up store en centro comercial premium. Perfecto para lanzamientos temporales, marcas emergentes, ventas estacionales o experiencias de marca. Diseño minimalista y ubicación estratégica.",
+            id: "space-shop-5",
+            ownerId: "owner-valeria",
+            title: "Vitrina comercial en mall - Display temporal",
+            description: "Vitrina tipo isla en centro comercial premium. Espacio de 10m² perfecto para exhibición y venta temporal de productos exclusivos, relojes, cosméticos o gadgets tecnológicos. Alta visibilidad garantizada.",
             type: "shop",
             location: { city: "Cancún", address: "La Isla Shopping Village, Zona Hotelera" },
-            price: { amount: 800, currency: "MXN" },
+            price: { amount: 700, currency: "MXN" },
             available: true,
             images: [
                 "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600",
@@ -657,17 +656,17 @@ export function getSeedData() {
             ],
         }),
         makeSpace({
-            id: "space-shop-3",
-            ownerId: "owner-fernando",
-            title: "Local esquinero 80m² - Centro",
-            description: "Local comercial en esquina con doble fachada y alta visibilidad. Incluye medio baño, área de oficina, bodega de 15m² y estacionamiento trasero. Ideal para restaurante pequeño, cafetería, agencia o consultorio.",
+            id: "space-shop-6",
+            ownerId: "owner-ricardo",
+            title: "Food truck spot - Parque público",
+            description: "Espacio designado para food truck en parque con alta afluencia familiar. Incluye conexión eléctrica, acceso a agua y área de mesas compartidas. Perfecto para emprendedores gastronómicos que quieren probar conceptos nuevos.",
             type: "shop",
-            location: { city: "Cancún", address: "Av. Cobá esquina Uxmal, Centro" },
-            price: { amount: 650, currency: "MXN" },
+            location: { city: "Cancún", address: "Parque Las Palapas, Centro" },
+            price: { amount: 400, currency: "MXN" },
             available: true,
             images: [
-                "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600",
-                "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600"
+                "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=600",
+                "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600"
             ],
         }),
 
@@ -679,10 +678,9 @@ export function getSeedData() {
             description: "Salón elegante de 300m² con capacidad para 200 personas. Incluye escenario, pista de baile, iluminación profesional, sistema de audio, cocina industrial, baños amplios y estacionamiento privado. Ideal para bodas, graduaciones o eventos corporativos grandes.",
             type: "event_space",
             location: { city: "Cancún", address: "Av. Huayacán 567, Supermanzana 45" },
-            price: { amount: 3500, currency: "MXN" },
+            price: { amount: 1500, currency: "MXN" },
             available: true,
             images: [
-                "https://images.unsplash.com/photo-1519167758481-83f29da8c8d0?w=600",
                 "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600",
                 "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600"
             ],
@@ -772,16 +770,16 @@ export function getSeedData() {
             ],
         }),
         makeSpace({
-            id: "space-room-4",
+            id: "space-parking-3",
             ownerId: "owner-ricardo",
-            title: "Habitación compartida tipo hostel - Centro",
-            description: "Litera individual en habitación compartida estilo hostel. Incluye locker personal, WiFi, cocina compartida y áreas comunes. Ambiente internacional y juvenil. Perfecto para viajeros con presupuesto.",
-            type: "room",
-            location: { city: "Cancún", address: "Calle Margaritas 45, Centro" },
-            price: { amount: 180, currency: "MXN" },
+            title: "Cochera residencial - Acceso diario",
+            description: "Espacio de estacionamiento en casa particular bien ubicada. Garage techado con portón eléctrico, seguro y limpio. Propietario está fuera durante el día, por lo que el espacio queda desocupado. Ideal para trabajadores de la zona o turistas.",
+            type: "garage",
+            location: { city: "Cancún", address: "Calle Margaritas 45, SM 26" },
+            price: { amount: 90, currency: "MXN" },
             available: true,
             images: [
-                "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600"
+                "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=600"
             ],
         }),
         makeSpace({
@@ -795,6 +793,138 @@ export function getSeedData() {
             available: true,
             images: [
                 "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600"
+            ],
+        }),
+
+        // ESPACIOS INFRAUTILIZADOS - EL VERDADERO DIFERENCIADOR
+        makeSpace({
+            id: "space-garage-5",
+            ownerId: "owner-alejandro",
+            title: "Cochera de casa - Dueño trabaja de día",
+            description: "Garage completamente desocupado de 8am a 6pm mientras el dueño trabaja. Espacio techado, seguro y con portón eléctrico. Aprovecha este espacio que normalmente estaría vacío. Perfecto para quienes trabajan en la zona.",
+            type: "garage",
+            location: { city: "Cancún", address: "SM 19, Calle Pino 67" },
+            price: { amount: 85, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=600"
+            ],
+        }),
+        makeSpace({
+            id: "space-parking-4",
+            ownerId: "owner-valeria",
+            title: "Entrada de casa - Espacio sin usar",
+            description: "Entrada pavimentada de casa particular que no se usa. El propietario no tiene auto, por lo que este espacio está siempre disponible. Ubicación céntrica y segura. Genera ingresos de un espacio que de otra forma estaría desaprovechado.",
+            type: "parking_spot",
+            location: { city: "Cancún", address: "SM 24, Av. Chichén Itzá 89" },
+            price: { amount: 70, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=600"
+            ],
+        }),
+        makeSpace({
+            id: "space-wall-4",
+            ownerId: "owner-gabriela",
+            title: "Pared lateral de edificio - Sin uso actual",
+            description: "Muro lateral de edificio de 10x4 metros completamente desaprovechado. Excelente visibilidad desde avenida principal. El propietario decidió monetizar este espacio que llevaba años sin ningún uso. Instalación de publicidad incluida.",
+            type: "wall",
+            location: { city: "Cancún", address: "Av. Cobá 678, Centro" },
+            price: { amount: 2200, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600"
+            ],
+        }),
+        makeSpace({
+            id: "space-warehouse-4",
+            ownerId: "owner-fernando",
+            title: "Cuarto de azotea - Espacio muerto convertido",
+            description: "Cuarto de servicio en azotea que no se utilizaba. 25m² limpios y secos, perfectos para almacenamiento. El dueño lo acondicionó para generar ingresos de un espacio que estaba completamente olvidado. Acceso independiente por escalera externa.",
+            type: "warehouse",
+            location: { city: "Cancún", address: "SM 32, Calle Tulipanes 123" },
+            price: { amount: 180, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600"
+            ],
+        }),
+        makeSpace({
+            id: "space-office-5",
+            ownerId: "owner-laura",
+            title: "Escritorio en oficina - Días específicos",
+            description: "Escritorio privado en oficina compartida. El propietario solo lo usa lunes y viernes, dejando el espacio libre martes, miércoles y jueves. Incluye internet de alta velocidad, aire acondicionado y acceso a sala de juntas. ¡Aprovecha los días que no se usan!",
+            type: "office",
+            location: { city: "Cancún", address: "Torre Corporativa, Av. Bonampak 150" },
+            price: { amount: 250, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600"
+            ],
+        }),
+        makeSpace({
+            id: "space-terrace-3",
+            ownerId: "owner-carmen",
+            title: "Terraza de edificio - Noches disponibles",
+            description: "Terraza de edificio departamental que solo se usa ocasionalmente. El administrador abrió el espacio para eventos nocturnos y fines de semana, generando ingresos para el edificio. 80m² con vista a la ciudad, mesas y sillas incluidas.",
+            type: "terrace",
+            location: { city: "Cancún", address: "Edificio Solaris, SM 16" },
+            price: { amount: 900, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600"
+            ],
+        }),
+        makeSpace({
+            id: "space-shop-7",
+            ownerId: "owner-diego",
+            title: "Vitrina de local cerrado - Fines de semana",
+            description: "Local comercial que cierra sábados y domingos. El dueño renta su vitrina frontal para emprendedores que quieren exponer productos durante el fin de semana. Espacio de 8m² con mostrador y electricidad. ¡Monetiza espacios en días de cierre!",
+            type: "shop",
+            location: { city: "Cancún", address: "Plaza Nichupté, Local 45" },
+            price: { amount: 380, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600"
+            ],
+        }),
+        makeSpace({
+            id: "space-garden-3",
+            ownerId: "owner-patricia",
+            title: "Jardín trasero - Eventos ocasionales",
+            description: "Jardín de 100m² de casa familiar que solo se usa en ocasiones especiales. La familia decidió rentarlo para eventos cuando ellos no lo ocupan. Incluye área verde, asador de ladrillo y baño. Convierte tu jardín en una fuente de ingresos.",
+            type: "garden",
+            location: { city: "Cancún", address: "Residencial Las Palmas, SM 40" },
+            price: { amount: 850, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600"
+            ],
+        }),
+        makeSpace({
+            id: "space-studio-5",
+            ownerId: "owner-roberto",
+            title: "Sótano acondicionado - Espacio rescatado",
+            description: "Sótano de 35m² que era usado como bodega familiar. Se limpió, iluminó y acondicionó para crear un estudio de ensayo musical. Ahora genera ingresos constantes de un espacio que antes solo juntaba polvo. Insonorizado parcialmente.",
+            type: "studio",
+            location: { city: "Cancún", address: "SM 27, Calle Azucenas 34" },
+            price: { amount: 280, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600"
+            ],
+        }),
+        makeSpace({
+            id: "space-rooftop-2",
+            ownerId: "owner-alejandro",
+            title: "Azotea de casa - Tardes y noches libres",
+            description: "Azotea de 60m² que solo se usa en las mañanas para tender ropa. Disponible tardes, noches y fines de semana completos para sesiones fotográficas, pequeños eventos o clases al aire libre. Vista panorámica incluida.",
+            type: "rooftop",
+            location: { city: "Cancún", address: "SM 25, Calle Roble 88" },
+            price: { amount: 400, currency: "MXN" },
+            available: true,
+            images: [
+                "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600"
             ],
         }),
     ];
@@ -841,10 +971,10 @@ export function getSeedData() {
         // ============ JUNIO 2025 ============
         {
             id: "rental-jun-1",
-            spaceId: "space-room-1",
+            spaceId: "space-shop-1",
             renterId: "renter-andres",
             dateRange: { start: isoDate(2025, 6, 5), end: isoDate(2025, 6, 10) },
-            totalCost: 2000
+            totalCost: 3600
         },
         {
             id: "rental-jun-2",
@@ -899,10 +1029,10 @@ export function getSeedData() {
         },
         {
             id: "rental-jul-3",
-            spaceId: "space-shop-1",
+            spaceId: "space-shop-2",
             renterId: "renter-andres",
             dateRange: { start: isoDate(2025, 7, 10), end: isoDate(2025, 7, 20) },
-            totalCost: 4500
+            totalCost: 4950
         },
         {
             id: "rental-jul-4",
@@ -929,10 +1059,10 @@ export function getSeedData() {
         // ============ AGOSTO 2025 ============
         {
             id: "rental-aug-1",
-            spaceId: "space-room-2",
+            spaceId: "space-shop-3",
             renterId: "renter-ana",
             dateRange: { start: isoDate(2025, 8, 1), end: isoDate(2025, 8, 7) },
-            totalCost: 5950
+            totalCost: 2450
         },
         {
             id: "rental-aug-2",
@@ -1024,10 +1154,10 @@ export function getSeedData() {
         },
         {
             id: "rental-oct-2",
-            spaceId: "space-room-3",
+            spaceId: "space-office-2",
             renterId: "renter-pablo",
             dateRange: { start: isoDate(2025, 10, 5), end: isoDate(2025, 10, 12) },
-            totalCost: 3850
+            totalCost: 1440
         },
         {
             id: "rental-oct-3",
@@ -1105,10 +1235,10 @@ export function getSeedData() {
         },
         {
             id: "rental-nov-5",
-            spaceId: "space-room-4",
+            spaceId: "space-parking-3",
             renterId: "renter-lucia",
             dateRange: { start: isoDate(2025, 11, 12), end: isoDate(2025, 11, 20) },
-            totalCost: 1440
+            totalCost: 810
         },
         {
             id: "rental-nov-6",
@@ -1163,10 +1293,10 @@ export function getSeedData() {
         },
         {
             id: "rental-dec-5",
-            spaceId: "space-room-2",
+            spaceId: "space-warehouse-2",
             renterId: "renter-carlos",
             dateRange: { start: isoDate(2025, 12, 20), end: isoDate(2025, 12, 27) },
-            totalCost: 5950
+            totalCost: 1600
         },
     ];
 

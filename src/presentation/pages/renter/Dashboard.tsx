@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { SpaceCard } from "../../components/cards/SpaceCard";
 import { Space, SpaceType } from "../../../core/entities/Space";
@@ -14,6 +14,7 @@ export const RenterDashboard: React.FC = () => {
     const [selectedType, setSelectedType] = useState<string>("all");
     const [priceRange, setPriceRange] = useState<string>("all");
     const [isLoading, setIsLoading] = useState(true);
+    const [showFilters, setShowFilters] = useState(false);
 
     const loadSpaces = async () => {
         setIsLoading(true);
@@ -51,199 +52,312 @@ export const RenterDashboard: React.FC = () => {
         types: new Set(spaces.map(s => s.type)).size,
     };
 
-    return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-teal-50">
-            {/* Hero Section */}
-            <div className="bg-gradient-to-r from-primary via-secondary to-primary relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-                </div>
-                <div className="max-w-7xl mx-auto px-6 py-16 relative z-10">
-                    <div className="text-center text-white">
-                        <h1 className="text-5xl md:text-6xl font-bold mb-4">
-                            Encuentra tu espacio ideal
-                        </h1>
-                        <p className="text-xl md:text-2xl text-blue-100 mb-8">
-                            Descubre espacios únicos en Cancún para tus necesidades
+    const hasActiveFilters = searchTerm || selectedType !== "all" || priceRange !== "all";
+
+    // Group spaces by category
+    const spacesByCategory = useMemo(() => {
+        const grouped: Record<string, Space[]> = {};
+        filteredSpaces.forEach(space => {
+            if (!grouped[space.type]) {
+                grouped[space.type] = [];
+            }
+            grouped[space.type].push(space);
+        });
+        return grouped;
+    }, [filteredSpaces]);
+
+    // Category Carousel Component
+    const CategoryCarousel: React.FC<{ category: string; spaces: Space[] }> = ({ category, spaces }) => {
+        const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+        const scroll = (direction: 'left' | 'right') => {
+            if (scrollContainerRef.current) {
+                const scrollAmount = 320;
+                const newScrollLeft = scrollContainerRef.current.scrollLeft + 
+                    (direction === 'left' ? -scrollAmount : scrollAmount);
+                scrollContainerRef.current.scrollTo({
+                    left: newScrollLeft,
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        return (
+            <div>
+                <div className="flex items-center justify-between mb-4">
+                    <div>
+                        <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+                            {category}
+                        </h2>
+                        <p className="text-sm text-gray-600 mt-0.5">
+                            {spaces.length} espacio{spaces.length !== 1 ? 's' : ''} disponible{spaces.length !== 1 ? 's' : ''}
                         </p>
-                        
-                        {/* Stats Cards */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-12">
-                            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-                                <div className="text-4xl font-bold">{stats.total}</div>
-                                <div className="text-blue-100 mt-2">Espacios Totales</div>
-                            </div>
-                            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-                                <div className="text-4xl font-bold">{stats.available}</div>
-                                <div className="text-blue-100 mt-2">Disponibles Ahora</div>
-                            </div>
-                            <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-                                <div className="text-4xl font-bold">{stats.types}</div>
-                                <div className="text-blue-100 mt-2">Categorías</div>
-                            </div>
-                        </div>
                     </div>
+                    {spaces.length > 3 && (
+                        <div className="hidden sm:flex gap-2">
+                            <button
+                                onClick={() => scroll('left')}
+                                className="p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition-colors"
+                                aria-label="Scroll izquierda"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button
+                                onClick={() => scroll('right')}
+                                className="p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition-colors"
+                                aria-label="Scroll derecha"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    )}
+                </div>
+                
+                <div 
+                    ref={scrollContainerRef}
+                    className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 sm:mx-0 sm:px-0"
+                >
+                    {spaces.map((space) => (
+                        <Link
+                            key={space.id}
+                            to={`/space/${space.id}`}
+                            className="flex-shrink-0 w-72 sm:w-80 bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden group border border-gray-200"
+                        >
+                            <div className="relative h-48 overflow-hidden">
+                                <img 
+                                    src={space.images[0]} 
+                                    alt={space.title}
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                                <div className="absolute top-3 right-3 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-lg text-sm font-bold text-primary shadow-md">
+                                    {space.price.format()}
+                                    <span className="text-xs text-gray-600 font-normal"> /hora</span>
+                                </div>
+                                {!space.available && (
+                                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                                        <span className="px-4 py-2 bg-white rounded-lg text-sm font-semibold text-gray-900">
+                                            No disponible
+                                        </span>
+                                    </div>
+                                )}
+                            </div>
+                            <div className="p-4">
+                                <h3 className="font-bold text-gray-900 mb-2 line-clamp-1">
+                                    {space.title}
+                                </h3>
+                                <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                                    {space.description}
+                                </p>
+                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    <span className="line-clamp-1">{space.location.city}</span>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
                 </div>
             </div>
+        );
+    };
 
-            {/* Search and Filters Section */}
-            <div className="max-w-7xl mx-auto px-6 -mt-8 relative z-20">
-                <div className="bg-white rounded-2xl shadow-2xl p-6">
-                    <div className="flex flex-col md:flex-row gap-4">
-                        {/* Search Bar */}
+    return (
+        <div className="min-h-screen bg-gray-50">
+            {/* Sticky Search Header - Professional */}
+            <div className="bg-white sticky top-0 z-40 shadow-md border-b border-gray-200">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    {/* Header Row */}
+                    <div className="py-4 flex items-center justify-between gap-4">
+                        <div className="flex-1 min-w-0">
+                            <h1 className="text-lg sm:text-xl font-bold text-gray-900 truncate">
+                                Explora Espacios
+                            </h1>
+                            <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
+                                {stats.available} espacios disponibles en {stats.types} categorías
+                            </p>
+                        </div>
+                        <Link 
+                            to="/my-reservations"
+                            className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium whitespace-nowrap"
+                        >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                            <span className="hidden sm:inline">Mis Reservas</span>
+                        </Link>
+                    </div>
+
+                    {/* Search and Filter Bar */}
+                    <div className="pb-4 flex gap-2">
                         <div className="flex-1 relative">
-                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>
                             <input
                                 type="text"
-                                placeholder="Buscar por nombre, descripción o ubicación..."
+                                placeholder="Buscar espacios..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm transition-all"
                             />
                         </div>
-
-                        {/* Type Filter */}
-                        <select
-                            value={selectedType}
-                            onChange={(e) => setSelectedType(e.target.value)}
-                            className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none cursor-pointer"
+                        <button
+                            onClick={() => setShowFilters(!showFilters)}
+                            className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all ${
+                                hasActiveFilters 
+                                    ? 'bg-primary text-white' 
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
                         >
-                            <option value="all">Todos los tipos</option>
-                            {Object.values(SpaceType).map(type => (
-                                <option key={type} value={type}>{type}</option>
-                            ))}
-                        </select>
-
-                        {/* Price Range Filter */}
-                        <select
-                            value={priceRange}
-                            onChange={(e) => setPriceRange(e.target.value)}
-                            className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none cursor-pointer"
-                        >
-                            <option value="all">Todos los precios</option>
-                            <option value="low">Menos de $100</option>
-                            <option value="medium">$100 - $300</option>
-                            <option value="high">Más de $300</option>
-                        </select>
-
-                        {/* Clear Filters */}
-                        {(searchTerm || selectedType !== "all" || priceRange !== "all") && (
-                            <button
-                                onClick={() => {
-                                    setSearchTerm("");
-                                    setSelectedType("all");
-                                    setPriceRange("all");
-                                }}
-                                className="px-6 py-3 text-gray-600 hover:text-red-500 font-semibold transition-colors whitespace-nowrap"
-                            >
-                                Limpiar filtros
-                            </button>
-                        )}
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                            </svg>
+                            <span className="hidden sm:inline">Filtros</span>
+                        </button>
                     </div>
+
+                    {/* Filter Panel - Collapsible */}
+                    {showFilters && (
+                        <div className="pb-4 grid grid-cols-1 sm:grid-cols-3 gap-3 animate-slideDown">
+                            {/* Type Filter */}
+                            <div>
+                                <label className="text-xs font-medium text-gray-700 mb-1.5 block">Tipo de espacio</label>
+                                <select
+                                    value={selectedType}
+                                    onChange={(e) => setSelectedType(e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent"
+                                >
+                                    <option value="all">Todos</option>
+                                    {Object.values(SpaceType).map(type => (
+                                        <option key={type} value={type}>{type}</option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            {/* Price Range Filter */}
+                            <div>
+                                <label className="text-xs font-medium text-gray-700 mb-1.5 block">Rango de precio</label>
+                                <select
+                                    value={priceRange}
+                                    onChange={(e) => setPriceRange(e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent"
+                                >
+                                    <option value="all">Todos</option>
+                                    <option value="low">Menos de $100/hora</option>
+                                    <option value="medium">$100 - $300/hora</option>
+                                    <option value="high">Más de $300/hora</option>
+                                </select>
+                            </div>
+
+                            {/* Clear Filters Button */}
+                            {hasActiveFilters && (
+                                <div className="flex items-end">
+                                    <button
+                                        onClick={() => {
+                                            setSearchTerm("");
+                                            setSelectedType("all");
+                                            setPriceRange("all");
+                                        }}
+                                        className="w-full px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium rounded-lg transition-colors text-sm"
+                                    >
+                                        Limpiar filtros
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
 
-            {/* Results Section */}
-            <main className="max-w-7xl mx-auto px-6 py-12">
-                <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900">
-                        {filteredSpaces.length === spaces.length 
-                            ? "Todos los espacios" 
-                            : `${filteredSpaces.length} resultado${filteredSpaces.length !== 1 ? 's' : ''} encontrado${filteredSpaces.length !== 1 ? 's' : ''}`
-                        }
-                    </h2>
-                    <Link 
-                        to="/my-reservations"
-                        className="flex items-center space-x-2 px-4 py-2 text-primary hover:text-secondary font-semibold transition-colors"
-                    >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                        <span>Mis Reservas</span>
-                    </Link>
-                </div>
-
+            {/* Main Content */}
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
                 {/* Loading State */}
                 {isLoading ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {[1, 2, 3, 4, 5, 6].map(i => (
-                            <div key={i} className="bg-white rounded-xl shadow-lg overflow-hidden animate-pulse">
-                                <div className="h-48 bg-gray-300"></div>
-                                <div className="p-6 space-y-3">
-                                    <div className="h-6 bg-gray-300 rounded"></div>
-                                    <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                                    <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                    <div className="space-y-8">
+                        {[1, 2, 3].map(i => (
+                            <div key={i} className="animate-pulse">
+                                <div className="h-6 bg-gray-200 rounded w-48 mb-4"></div>
+                                <div className="flex gap-4 overflow-hidden">
+                                    {[1, 2, 3].map(j => (
+                                        <div key={j} className="flex-shrink-0 w-72 bg-white rounded-xl shadow-sm overflow-hidden">
+                                            <div className="h-48 bg-gray-200"></div>
+                                            <div className="p-4 space-y-3">
+                                                <div className="h-5 bg-gray-200 rounded w-3/4"></div>
+                                                <div className="h-4 bg-gray-100 rounded w-1/2"></div>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         ))}
                     </div>
                 ) : filteredSpaces.length === 0 ? (
                     /* Empty State */
-                    <div className="text-center py-20">
-                        <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                            <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <div className="text-center py-20 px-4">
+                        <div className="w-20 h-20 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+                            <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">No se encontraron espacios</h3>
-                        <p className="text-gray-600 mb-6">
-                            Intenta ajustar tus filtros o buscar con otros términos
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                            No se encontraron espacios
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-6 max-w-md mx-auto">
+                            Intenta ajustar tus filtros o realizar una búsqueda diferente
                         </p>
                         <button
                             onClick={() => {
                                 setSearchTerm("");
                                 setSelectedType("all");
                                 setPriceRange("all");
+                                setShowFilters(false);
                             }}
-                            className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg transition-all"
+                            className="px-6 py-2.5 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors"
                         >
                             Ver todos los espacios
                         </button>
                     </div>
+                ) : hasActiveFilters ? (
+                    /* Filtered Results - Grid View */
+                    <div>
+                        <div className="mb-6">
+                            <h2 className="text-xl font-bold text-gray-900 mb-2">
+                                Resultados de búsqueda
+                            </h2>
+                            <p className="text-sm text-gray-600">
+                                {filteredSpaces.length} espacio{filteredSpaces.length !== 1 ? 's' : ''} encontrado{filteredSpaces.length !== 1 ? 's' : ''}
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {filteredSpaces.map((space) => (
+                                <SpaceCard key={space.id} space={space} viewMode="grid" />
+                            ))}
+                        </div>
+                    </div>
                 ) : (
-                    /* Spaces Grid */
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredSpaces.map((space) => (
-                            <SpaceCard key={space.id} space={space} />
+                    /* Category Carousels - No Filters Active */
+                    <div className="space-y-8">
+                        {Object.entries(spacesByCategory).map(([category, categorySpaces]) => (
+                            <CategoryCarousel
+                                key={category}
+                                category={category}
+                                spaces={categorySpaces}
+                            />
                         ))}
                     </div>
                 )}
             </main>
 
-            {/* Quick Categories Section */}
-            {!isLoading && filteredSpaces.length > 0 && (
-                <section className="max-w-7xl mx-auto px-6 pb-16">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Categorías populares</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {Object.values(SpaceType).slice(0, 4).map(type => (
-                            <button
-                                key={type}
-                                onClick={() => setSelectedType(type)}
-                                className={`p-6 rounded-xl border-2 transition-all ${
-                                    selectedType === type
-                                        ? "border-primary bg-primary/5 shadow-lg"
-                                        : "border-gray-200 hover:border-primary/50 hover:shadow-md"
-                                }`}
-                            >
-                                <div className="text-4xl mb-2">
-                                    {type === SpaceType.GARAGE ? "🚗" : 
-                                     type === SpaceType.OFFICE ? "�" :
-                                     type === SpaceType.STUDIO ? "🎨" : "🏢"}
-                                </div>
-                                <div className="font-semibold text-gray-900">{type}</div>
-                                <div className="text-sm text-gray-600 mt-1">
-                                    {spaces.filter(s => s.type === type).length} disponibles
-                                </div>
-                            </button>
-                        ))}
-                    </div>
-                </section>
-            )}
+            {/* Bottom Spacing */}
+            <div className="h-8"></div>
         </div>
     );
 };

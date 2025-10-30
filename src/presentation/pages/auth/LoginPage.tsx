@@ -37,16 +37,7 @@ export const LoginPage: React.FC = () => {
         <div className="w-full max-w-md">
           {/* Logo y Header */}
           <div className="text-center mb-8">
-            <Link to="/" className="inline-flex items-center space-x-3 group mb-4">
-              <img 
-                src="/src/assets/logo_SpaceShare.png" 
-                alt="SpaceShare" 
-                className="w-12 h-12 group-hover:scale-110 transition-transform duration-300"
-              />
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                SpaceShare
-              </span>
-            </Link>
+           
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               ¡Bienvenido de nuevo!
             </h1>
@@ -220,7 +211,7 @@ export const LoginPage: React.FC = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <img
           src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop"
-          alt="SpaceShare"
+          alt="MeXpace"
           className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
         />
         <div className="relative z-10 flex flex-col items-center justify-center text-white p-12 text-center">

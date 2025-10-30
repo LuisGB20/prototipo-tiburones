@@ -51,7 +51,7 @@ export const Header: React.FC = () => {
               />
             </div>
             <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent group-hover:from-secondary group-hover:via-primary group-hover:to-secondary transition-all duration-300">
-              SpaceShare
+              MeXpace
             </span>
           </Link>
 

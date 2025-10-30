@@ -1,4 +1,4 @@
-# 👥 Usuarios de Prueba - SpaceShare
+# 👥 Usuarios de Prueba - MeXpace
 
 ## 📋 Cuentas Pre-configuradas
 
