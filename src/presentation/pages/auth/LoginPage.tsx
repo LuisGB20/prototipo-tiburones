@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { UserRole } from "../../../core/entities/User";
+import logo from "../../../assets/logo_SpaceShare.png";
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
