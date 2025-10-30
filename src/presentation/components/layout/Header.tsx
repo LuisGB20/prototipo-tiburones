@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import logo from "../../../assets/logo_SpaceShare.png";
 
 export const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -44,7 +45,7 @@ export const Header: React.FC = () => {
           >
             <div className="relative">
               <img 
-                src="/src/assets/logo_SpaceShare.png" 
+                src={logo}
                 alt="SpaceShare Logo" 
                 className="w-10 h-10 md:w-12 md:h-12 object-contain transition-all duration-300 group-hover:scale-110 drop-shadow-lg" 
               />

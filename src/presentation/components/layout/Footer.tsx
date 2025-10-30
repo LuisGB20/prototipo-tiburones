@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../assets/logo_SpaceShare.png";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -14,7 +15,7 @@ export const Footer: React.FC = () => {
             <Link to="/" className="flex items-center space-x-3 group w-fit">
               <div className="relative">
                 <img 
-                  src="/src/assets/logo_SpaceShare.png" 
+                  src={logo}
                   alt="SpaceShare Logo" 
                   className="w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110 drop-shadow-lg" 
                 />

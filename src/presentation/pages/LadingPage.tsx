@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import testimonio1 from "../../assets/leyva.jpeg";
+import testimonio2 from "../../assets/diego.jpeg";
+import testimonio3 from "../../assets/coronado.jpeg";
+
 
 export const LandingPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,21 +26,21 @@ export const LandingPage: React.FC = () => {
       author: "Carlos M.",
       role: "Director de Video",
       rating: 5,
-      image: "/src/assets/leyva.jpeg"
+      image: testimonio1
     },
     {
       text: "Rentar mi cochera fue muy fácil y rápido, totalmente confiable. Ahora genero ingresos pasivos mientras no uso mi espacio. ¡Increíble!",
       author: "Ana P.",
       role: "Propietaria",
       rating: 5,
-      image: "/src/assets/diego.jpeg"
+      image: testimonio2
     },
     {
       text: "Los espacios son de calidad y la plataforma muy intuitiva. He rentado varios lugares para mis eventos y siempre una experiencia 10/10.",
       author: "Luis G.",
       role: "Organizador de Eventos",
       rating: 5,
-      image: "/src/assets/coronado.jpeg"
+      image: testimonio3
     }
   ];
 
