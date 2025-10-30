@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { UserRole } from "../../../core/entities/User";
+import logo from "../../../assets/logo_SpaceShare.png";
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -39,9 +40,9 @@ export const LoginPage: React.FC = () => {
           <div className="text-center mb-8">
             <Link to="/" className="inline-flex items-center space-x-3 group mb-4">
               <img 
-                src="/src/assets/logo_SpaceShare.png" 
+                src={logo} 
                 alt="SpaceShare" 
-                className="w-12 h-12 group-hover:scale-110 transition-transform duration-300"
+                className="h-12 group-hover:scale-110 transition-transform duration-300"
               />
               <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 SpaceShare
