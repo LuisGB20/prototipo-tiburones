@@ -1,32 +1,32 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { UserService } from "../../../application/services/UserService";
+import { useAuth } from "../../context/AuthContext";
+import { UserRole } from "../../../core/entities/User";
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const { login, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
     setError("");
     
     try {
-      const service = new UserService();
-      const user = await service.login(email, password);
-      localStorage.setItem("currentUser", JSON.stringify(user));
+      const user = await login(email, password);
+      
+      // Redirigir según el rol del usuario
+      const redirectPath = user.role === UserRole.OWNER ? "/owner" : "/renter";
       
       // Animación de éxito antes de redirigir
       setTimeout(() => {
-        navigate("/");
+        navigate(redirectPath);
       }, 500);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Error al iniciar sesión");
-      setIsLoading(false);
     }
   };
 

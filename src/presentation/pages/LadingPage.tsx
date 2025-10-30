@@ -183,12 +183,12 @@ export const LandingPage: React.FC = () => {
         </div>
 
         {/* Content */}
-        <div className={`relative z-10 max-w-7xl mx-auto px-6 py-20 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-block mb-6 px-6 py-2 bg-primary/10 backdrop-blur-sm rounded-lg border border-primary/20">
-            <span className="text-primary font-semibold">Plataforma líder en gestión de espacios</span>
+        <div className={`relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="inline-block mb-4 sm:mb-6 px-4 sm:px-6 py-2 bg-primary/10 backdrop-blur-sm rounded-lg border border-primary/20">
+            <span className="text-primary font-semibold text-xs sm:text-sm">Plataforma líder en gestión de espacios</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
             Conectamos espacios
             <br />
             <span className="text-primary">
@@ -196,17 +196,17 @@ export const LandingPage: React.FC = () => {
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
             Solución integral para la gestión y renta de espacios temporales en Cancún.
-            <br />
+            <br className="hidden sm:block" />
             <strong className="text-white">Profesional. Confiable. Eficiente.</strong>
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 px-4">
             <Link
               to="/register"
-              className="group relative px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-primary text-white rounded-lg font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <span className="relative z-10 flex items-center justify-center">
                 Comenzar ahora
@@ -218,28 +218,28 @@ export const LandingPage: React.FC = () => {
             
             <Link
               to="/spaces"
-              className="px-8 py-4 bg-transparent text-white rounded-lg font-semibold text-lg border-2 border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white rounded-lg font-semibold text-base sm:text-lg border-2 border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 active:scale-95"
             >
               Explorar espacios
             </Link>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto px-4">
             {stats.map((stat, index) => (
               <div 
                 key={index}
-                className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                className="bg-white/5 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-white/10 hover:bg-white/10 transition-all duration-300"
               >
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-gray-400 text-sm uppercase tracking-wide">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">{stat.number}</div>
+                <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        {/* Scroll indicator - Hidden on mobile */}
+        <div className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <svg className="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
@@ -247,33 +247,55 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Categorías - Acceso rápido */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-4 px-4">
               Categorías de espacios
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
               Descubre las opciones disponibles en nuestra plataforma
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {categories.map((category, index) => (
               <Link
                 key={index}
                 to="/spaces"
-                className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+                className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 active:scale-95 overflow-hidden"
               >
-                <div className="p-8">
-                  <div className="text-primary mb-4">{category.icon}</div>
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900">{category.name}</h3>
-                  <p className="text-gray-600 mb-1 font-semibold">{category.count} disponibles</p>
-                  <p className="text-sm text-gray-500">{category.price}</p>
-                  <div className="mt-4 flex items-center text-sm font-semibold text-primary">
-                    Ver más
+                <div className="p-6 sm:p-8 text-center flex flex-col items-center h-full">
+                  {/* Icono centrado con fondo */}
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4 sm:mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    {category.icon}
+                  </div>
+                  
+                  {/* Título */}
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900 group-hover:text-primary transition-colors">
+                    {category.name}
+                  </h3>
+                  
+                  {/* Contador */}
+                  <div className="mb-2">
+                    <span className="inline-block px-4 py-1 bg-gray-100 rounded-full text-gray-700 font-semibold text-sm sm:text-base">
+                      {category.count} disponibles
+                    </span>
+                  </div>
+                  
+                  {/* Precio */}
+                  <p className="text-sm sm:text-base text-gray-500 mb-4">
+                    {category.price}
+                  </p>
+                  
+                  {/* Separador */}
+                  <div className="w-full h-px bg-gray-200 mb-4"></div>
+                  
+                  {/* CTA */}
+                  <div className="flex items-center justify-center text-sm sm:text-base font-semibold text-primary group-hover:text-secondary transition-colors">
+                    Ver más espacios
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </div>
                 </div>
@@ -284,26 +306,26 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Features - Beneficios Clave */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-4 px-4">
               Ventajas competitivas
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
               Características que nos diferencian en el mercado
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-lg p-8 border border-gray-200 hover:border-primary hover:shadow-lg transition-all duration-300"
+                className="group bg-white rounded-lg p-6 sm:p-8 border border-gray-200 hover:border-primary hover:shadow-lg transition-all duration-300"
               >
                 <div className="text-primary mb-4">{feature.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -311,52 +333,52 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* How it Works - Proceso simple */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-4 px-4">
               Proceso de inicio
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
               Tres pasos para comenzar a utilizar la plataforma
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {howItWorks.map((item, index) => (
               <div key={index} className="relative">
-                {/* Connector line */}
+                {/* Connector line - Only on desktop */}
                 {index < howItWorks.length - 1 && (
-                  <div className="hidden md:block absolute top-1/4 left-[60%] w-[80%] h-0.5 bg-gray-300 z-0"></div>
+                  <div className="hidden lg:block absolute top-1/4 left-[60%] w-[80%] h-0.5 bg-gray-300 z-0"></div>
                 )}
                 
                 <div className="relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 z-10 border border-gray-100">
                   {/* Image */}
-                  <div className="relative h-48 overflow-hidden bg-gray-100">
+                  <div className="relative h-40 sm:h-48 overflow-hidden bg-gray-100">
                     <img 
                       src={item.image} 
                       alt={item.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-4 left-4 w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-xl font-bold text-white">{item.step}</span>
+                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-lg sm:text-xl font-bold text-white">{item.step}</span>
                     </div>
                   </div>
                   
                   {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                  <div className="p-5 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{item.description}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 sm:mt-12 px-4">
             <Link
               to="/register"
-              className="inline-block px-8 py-4 bg-primary text-white rounded-lg font-semibold text-lg shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300"
+              className="inline-block w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-primary text-white rounded-lg font-semibold text-base sm:text-lg shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300 active:scale-95"
             >
               Crear cuenta gratuita
             </Link>
@@ -365,52 +387,52 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* Testimonials - Prueba social */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-4 px-4">
               Testimonios de clientes
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
               Experiencias de usuarios de la plataforma
             </p>
           </div>
 
           {/* Testimonial Carousel */}
           <div className="relative max-w-4xl mx-auto">
-            <div className="bg-gray-50 rounded-lg p-12 shadow-md border border-gray-200">
+            <div className="bg-gray-50 rounded-lg p-6 sm:p-8 md:p-12 shadow-md border border-gray-200">
               <div className="text-center">
                 {/* Stars */}
-                <div className="flex justify-center gap-1 mb-6">
+                <div className="flex justify-center gap-1 mb-4 sm:mb-6">
                   {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                    <svg key={i} className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <svg key={i} className="w-5 h-5 sm:w-6 sm:h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
 
                 {/* Quote */}
-                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 leading-relaxed px-2">
                   "{testimonials[activeTestimonial].text}"
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center justify-center gap-4">
+                <div className="flex items-center justify-center gap-3 sm:gap-4">
                   <img 
                     src={testimonials[activeTestimonial].image} 
                     alt={testimonials[activeTestimonial].author}
-                    className="w-14 h-14 rounded-full border-2 border-gray-300 shadow-md"
+                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-gray-300 shadow-md"
                   />
                   <div className="text-left">
-                    <p className="font-bold text-gray-900">{testimonials[activeTestimonial].author}</p>
-                    <p className="text-gray-600 text-sm">{testimonials[activeTestimonial].role}</p>
+                    <p className="font-bold text-gray-900 text-sm sm:text-base">{testimonials[activeTestimonial].author}</p>
+                    <p className="text-gray-600 text-xs sm:text-sm">{testimonials[activeTestimonial].role}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Indicators */}
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-2 mt-6 sm:mt-8">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
@@ -425,49 +447,49 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Trust badges */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
-            <div className="text-center p-6 bg-white border border-gray-200 rounded-lg">
-              <div className="w-12 h-12 mx-auto mb-3 text-primary">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-8 sm:mt-12 md:mt-16 max-w-4xl mx-auto">
+            <div className="text-center p-4 sm:p-6 bg-white border border-gray-200 rounded-lg">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 text-primary">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <p className="font-semibold text-gray-900">Verificación</p>
-              <p className="text-sm text-gray-600">Usuarios verificados</p>
+              <p className="font-semibold text-gray-900 text-sm sm:text-base">Verificación</p>
+              <p className="text-xs sm:text-sm text-gray-600">Usuarios verificados</p>
             </div>
-            <div className="text-center p-6 bg-white border border-gray-200 rounded-lg">
-              <div className="w-12 h-12 mx-auto mb-3 text-primary">
+            <div className="text-center p-4 sm:p-6 bg-white border border-gray-200 rounded-lg">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 text-primary">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <p className="font-semibold text-gray-900">Seguridad</p>
-              <p className="text-sm text-gray-600">Pagos protegidos</p>
+              <p className="font-semibold text-gray-900 text-sm sm:text-base">Seguridad</p>
+              <p className="text-xs sm:text-sm text-gray-600">Pagos protegidos</p>
             </div>
-            <div className="text-center p-6 bg-white border border-gray-200 rounded-lg">
-              <div className="w-12 h-12 mx-auto mb-3 text-primary">
+            <div className="text-center p-4 sm:p-6 bg-white border border-gray-200 rounded-lg">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 text-primary">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <p className="font-semibold text-gray-900">Rapidez</p>
-              <p className="text-sm text-gray-600">Respuesta inmediata</p>
+              <p className="font-semibold text-gray-900 text-sm sm:text-base">Rapidez</p>
+              <p className="text-xs sm:text-sm text-gray-600">Respuesta inmediata</p>
             </div>
-            <div className="text-center p-6 bg-white border border-gray-200 rounded-lg">
-              <div className="w-12 h-12 mx-auto mb-3 text-primary">
+            <div className="text-center p-4 sm:p-6 bg-white border border-gray-200 rounded-lg">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 text-primary">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <p className="font-semibold text-gray-900">Confiabilidad</p>
-              <p className="text-sm text-gray-600">98% satisfacción</p>
+              <p className="font-semibold text-gray-900 text-sm sm:text-base">Confiabilidad</p>
+              <p className="text-xs sm:text-sm text-gray-600">98% satisfacción</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Final */}
-      <section className="relative py-20 px-6 overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         {/* Background */}
         <div className="absolute inset-0 opacity-10">
           <img
@@ -479,56 +501,56 @@ export const LandingPage: React.FC = () => {
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 px-4">
             Comience a utilizar la plataforma
           </h2>
           
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-12 leading-relaxed px-4">
             Únase a más de 1,200 usuarios que ya están optimizando sus espacios
-            <br />
+            <br className="hidden sm:block" />
             o encontrando ubicaciones ideales para sus necesidades
           </p>
 
           {/* Dual CTA */}
-          <div className="flex flex-col md:flex-row justify-center gap-6 mb-8">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-6 sm:mb-8 px-4">
             <Link
               to="/register"
-              className="px-10 py-4 bg-primary text-white rounded-lg font-semibold text-lg shadow-xl hover:bg-primary/90 transition-all duration-300"
+              className="px-8 sm:px-10 py-3 sm:py-4 bg-primary text-white rounded-lg font-semibold text-base sm:text-lg shadow-xl hover:bg-primary/90 transition-all duration-300 active:scale-95"
             >
               Crear cuenta
             </Link>
             
             <Link
               to="/spaces"
-              className="px-10 py-4 bg-white text-gray-900 rounded-lg font-semibold text-lg shadow-xl hover:bg-gray-100 transition-all duration-300"
+              className="px-8 sm:px-10 py-3 sm:py-4 bg-white text-gray-900 rounded-lg font-semibold text-base sm:text-lg shadow-xl hover:bg-gray-100 transition-all duration-300 active:scale-95"
             >
               Ver espacios disponibles
             </Link>
           </div>
 
           {/* Guarantee */}
-          <div className="flex items-center justify-center gap-2 text-gray-400">
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <div className="flex items-center justify-center gap-2 text-gray-400 px-4">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            <span className="text-sm">Registro gratuito • Sin compromiso inicial</span>
+            <span className="text-xs sm:text-sm">Registro gratuito • Sin compromiso inicial</span>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-4 px-4">
               Preguntas frecuentes
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
               Información relevante sobre el funcionamiento de la plataforma
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {[
               {
                 q: "¿Cuál es el costo de utilizar la plataforma?",
@@ -551,14 +573,14 @@ export const LandingPage: React.FC = () => {
                 a: "La plataforma ofrece una amplia variedad de espacios: cocheras, oficinas, salones para eventos, estudios, áreas de almacenamiento, entre otros."
               }
             ].map((faq, index) => (
-              <details key={index} className="group bg-gray-50 rounded-lg p-6 border border-gray-200 hover:border-primary transition-all cursor-pointer">
-                <summary className="flex items-center justify-between font-semibold text-gray-900 cursor-pointer list-none">
-                  <span>{faq.q}</span>
-                  <svg className="w-5 h-5 text-primary group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <details key={index} className="group bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200 hover:border-primary transition-all cursor-pointer">
+                <summary className="flex items-center justify-between font-semibold text-gray-900 cursor-pointer list-none text-sm sm:text-base">
+                  <span className="pr-4">{faq.q}</span>
+                  <svg className="w-5 h-5 text-primary group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <p className="mt-4 text-gray-600 leading-relaxed">{faq.a}</p>
+                <p className="mt-3 sm:mt-4 text-gray-600 leading-relaxed text-sm sm:text-base">{faq.a}</p>
               </details>
             ))}
           </div>

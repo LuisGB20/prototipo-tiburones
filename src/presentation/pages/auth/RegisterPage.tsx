@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { UserService } from "../../../application/services/UserService";
+import { useAuth } from "../../context/AuthContext";
 import { UserRole } from "../../../core/entities/User";
 
 export const RegisterPage: React.FC = () => {
@@ -12,8 +12,8 @@ export const RegisterPage: React.FC = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [role, setRole] = useState<UserRole>(UserRole.RENTER);
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const { register, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -36,20 +36,18 @@ export const RegisterPage: React.FC = () => {
       return;
     }
 
-    setIsLoading(true);
-
     try {
-      const service = new UserService();
-      const user = await service.register({ name, email, password, role });
-      localStorage.setItem("currentUser", JSON.stringify(user));
+      const user = await register({ name, email, password, role });
+      
+      // Redirigir según el rol
+      const redirectPath = user.role === UserRole.OWNER ? "/owner" : "/renter";
       
       // Animación de éxito
       setTimeout(() => {
-        navigate("/");
+        navigate(redirectPath);
       }, 500);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Error al registrarse");
-      setIsLoading(false);
     }
   };
 

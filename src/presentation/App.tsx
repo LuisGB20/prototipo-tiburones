@@ -13,33 +13,81 @@ import { SpacesPage } from "./pages/space/SpacesPage"
 import { MySpacesPage } from "./pages/owner/MySpacesPage"
 import { MyReservationsPage } from "./pages/renter/MyReservationsPage"
 import { AddSpacePage } from "./pages/space/AddSpacePage"
+import { UnauthorizedPage } from "./pages/UnauthorizedPage"
+import { AuthProvider } from "./context/AuthContext"
+import { RoleBasedRoute } from "./components/auth/RoleBasedRoute"
+import { UserRole } from "../core/entities/User"
 
 function App() {
 
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/owner" element={<OwnerDashboard />} />
-        <Route path="/renter" element={<RenterDashboard />} />
-        <Route path="/debug" element={<DebugPage />} />
-        <Route
-          path="/space/:id"
-          element={<SpaceDetailPage />}
-        />
-        <Route path="/rental/:id" element={<SpaceRentalPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/spaces" element={<SpacesPage />} />
-        <Route path="/spaces/new" element={<AddSpacePage />} />
-        <Route path="/my-spaces" element={<MySpacesPage />} />
-        <Route path="/my-reservations" element={<MyReservationsPage />} />
+      <AuthProvider>
+        <Header />
+        <Routes>
+          {/* Rutas públicas */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/spaces" element={<SpacesPage />} />
+          <Route path="/space/:id" element={<SpaceDetailPage />} />
+          <Route path="/debug" element={<DebugPage />} />
+          <Route path="/unauthorized" element={<UnauthorizedPage />} />
 
+          {/* Rutas protegidas - Solo propietarios (OWNER) */}
+          <Route
+            path="/owner"
+            element={
+              <RoleBasedRoute allowedRoles={[UserRole.OWNER]}>
+                <OwnerDashboard />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/my-spaces"
+            element={
+              <RoleBasedRoute allowedRoles={[UserRole.OWNER]}>
+                <MySpacesPage />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/spaces/new"
+            element={
+              <RoleBasedRoute allowedRoles={[UserRole.OWNER]}>
+                <AddSpacePage />
+              </RoleBasedRoute>
+            }
+          />
 
-
-      </Routes>
-      <Footer />
+          {/* Rutas protegidas - Solo rentadores (RENTER) */}
+          <Route
+            path="/renter"
+            element={
+              <RoleBasedRoute allowedRoles={[UserRole.RENTER]}>
+                <RenterDashboard />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/my-reservations"
+            element={
+              <RoleBasedRoute allowedRoles={[UserRole.RENTER]}>
+                <MyReservationsPage />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/rental/:id"
+            element={
+              <RoleBasedRoute allowedRoles={[UserRole.RENTER]}>
+                <SpaceRentalPage />
+              </RoleBasedRoute>
+            }
+          />
+        </Routes>
+        <Footer />
+      </AuthProvider>
     </BrowserRouter>
   )
 }

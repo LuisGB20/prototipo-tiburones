@@ -9,3 +9,13 @@
   --color-gray-medium: #888888;
   --color-gray-dark: #333333;
 }
+
+/* Ocultar scrollbar en carrouseles pero mantener funcionalidad */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

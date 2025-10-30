@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 export const Header: React.FC = () => {
-  const [user, setUser] = useState<{ name: string; role?: string } | null>(null);
+  const { user, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    const stored = localStorage.getItem("currentUser");
-    if (stored) setUser(JSON.parse(stored));
-  }, []);
 
   // Efecto de scroll para cambiar el header
   useEffect(() => {
@@ -24,8 +20,7 @@ export const Header: React.FC = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    setUser(null);
+    logout();
     setUserMenuOpen(false);
     navigate("/login");
   };
