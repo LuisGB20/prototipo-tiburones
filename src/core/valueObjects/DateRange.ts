@@ -8,6 +8,11 @@ export class DateRange {
         this.end = end;
     }
 
+    getDurationDays(): number {
+        const msInDay = 1000 * 60 * 60 * 24;
+        return Math.ceil((this.start.getTime() - this.end.getTime()) / msInDay);
+    }
+
     getDurationHours(): number {
         const diff = this.end.getTime() - this.start.getTime();
         return diff / (1000 * 60 * 60); // horas exactas

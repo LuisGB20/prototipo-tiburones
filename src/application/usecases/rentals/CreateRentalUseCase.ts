@@ -19,6 +19,7 @@ export class CreateRentalUseCase
             id: uuidv4(),
             spaceId: request.spaceId,
             renterId: request.renterId,
+            ownerId: request.ownerId,
             dateRange: range,
             totalCost,
         });
