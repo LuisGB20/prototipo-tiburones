@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { UserRole } from "../../../core/entities/User";
-import logo from "../../../assets/logo_SpaceShare.png";
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +33,7 @@ export const LoginPage: React.FC = () => {
   return (
     <div className="min-h-screen flex">
       {/* Lado Izquierdo - Formulario */}
-      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 lg:p-12 bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 lg:p-12 bg-linear-to-br from-gray-50 to-gray-100">
         <div className="w-full max-w-md">
           {/* Logo y Header */}
           <div className="text-center mb-8">
@@ -53,7 +52,7 @@ export const LoginPage: React.FC = () => {
               {/* Error Alert */}
               {error && (
                 <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start space-x-3 animate-in fade-in slide-in-from-top-2 duration-300">
-                  <svg className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-red-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                   </svg>
                   <p className="text-sm text-red-700">{error}</p>
@@ -142,7 +141,7 @@ export const LoginPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 px-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full py-3 px-4 bg-linear-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center space-x-2">
@@ -208,7 +207,7 @@ export const LoginPage: React.FC = () => {
       </div>
 
       {/* Lado Derecho - Imagen Hero */}
-      <div className="hidden lg:flex flex-1 relative bg-gradient-to-br from-primary via-secondary to-primary">
+      <div className="hidden lg:flex flex-1 relative bg-linear-to-br from-primary via-secondary to-primary">
         <div className="absolute inset-0 bg-black/20"></div>
         <img
           src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop"

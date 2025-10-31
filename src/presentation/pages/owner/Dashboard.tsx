@@ -99,7 +99,7 @@ export const OwnerDashboard: React.FC = () => {
                     className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 -mx-2 px-2"
                 >
                     {spaces.map((space) => (
-                        <div key={space.id} className="flex-shrink-0 w-72 sm:w-80">
+                        <div key={space.id} className="shrink-0 w-72 sm:w-80">
                             <SpaceCard space={space} viewMode="grid" />
                         </div>
                     ))}
@@ -193,7 +193,7 @@ export const OwnerDashboard: React.FC = () => {
                         <div className="overflow-x-auto scrollbar-hide -mx-4 px-4">
                             <div className="flex gap-4 pb-2" style={{ minWidth: 'min-content' }}>
                                 {/* Total Spaces */}
-                                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 min-w-[160px]">
+                                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 min-w-40">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-primary/10 p-2 rounded-lg">
                                             <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ export const OwnerDashboard: React.FC = () => {
                                 </div>
 
                                 {/* Total Rentals */}
-                                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 min-w-[160px]">
+                                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 min-w-40">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-secondary/10 p-2 rounded-lg">
                                             <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -223,7 +223,7 @@ export const OwnerDashboard: React.FC = () => {
                                 </div>
 
                                 {/* Monthly Revenue */}
-                                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 min-w-[160px]">
+                                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 min-w-40">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-green-50 p-2 rounded-lg">
                                             <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,7 +238,7 @@ export const OwnerDashboard: React.FC = () => {
                                 </div>
 
                                 {/* Active Spaces */}
-                                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 min-w-[160px]">
+                                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 min-w-40">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-accent/10 p-2 rounded-lg">
                                             <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -258,7 +258,7 @@ export const OwnerDashboard: React.FC = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <Link
                                 to="/spaces/new"
-                                className="bg-gradient-to-br from-primary to-primary/90 text-white rounded-lg p-4 hover:shadow-md transition-shadow"
+                                className="bg-linear-to-br from-primary to-primary/90 text-white rounded-lg p-4 hover:shadow-md transition-shadow"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="bg-white/20 p-2 rounded-lg">
@@ -275,7 +275,7 @@ export const OwnerDashboard: React.FC = () => {
 
                             <Link
                                 to="/owner/spaces"
-                                className="bg-gradient-to-br from-secondary to-secondary/90 text-white rounded-lg p-4 hover:shadow-md transition-shadow"
+                                className="bg-linear-to-br from-secondary to-secondary/90 text-white rounded-lg p-4 hover:shadow-md transition-shadow"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="bg-white/20 p-2 rounded-lg">
@@ -290,7 +290,7 @@ export const OwnerDashboard: React.FC = () => {
                                 </div>
                             </Link>
 
-                            <button className="bg-gradient-to-br from-accent to-accent/90 text-white rounded-lg p-4 hover:shadow-md transition-shadow text-left">
+                            <button className="bg-linear-to-br from-accent to-accent/90 text-white rounded-lg p-4 hover:shadow-md transition-shadow text-left">
                                 <div className="flex items-center gap-3">
                                     <div className="bg-white/20 p-2 rounded-lg">
                                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

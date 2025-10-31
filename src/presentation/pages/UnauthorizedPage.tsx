@@ -12,7 +12,7 @@ export const UnauthorizedPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 via-gray-100 to-gray-50 flex items-center justify-center px-4 py-12">
       <div className="max-w-2xl w-full">
         {/* Ilustración */}
         <div className="text-center mb-8">
@@ -45,10 +45,10 @@ export const UnauthorizedPage: React.FC = () => {
             <div className="space-y-6">
               {/* Información del usuario actual */}
               {user && (
-                <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl p-6 border border-primary/10">
+                <div className="bg-linear-to-r from-primary/5 to-secondary/5 rounded-xl p-6 border border-primary/10">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary to-primary flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                    <div className="shrink-0">
+                      <div className="w-14 h-14 rounded-full bg-linear-to-br from-secondary to-primary flex items-center justify-center text-white text-xl font-bold shadow-lg">
                         {user.name.charAt(0).toUpperCase()}
                       </div>
                     </div>
@@ -84,7 +84,7 @@ export const UnauthorizedPage: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <button
                   onClick={() => navigate(getDashboardPath())}
-                  className="flex-1 px-6 py-3.5 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center space-x-2"
+                  className="flex-1 px-6 py-3.5 bg-linear-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center space-x-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />

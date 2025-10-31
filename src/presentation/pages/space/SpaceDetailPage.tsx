@@ -149,7 +149,7 @@ export const SpaceDetailPage: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pb-12">
+        <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 pb-12">
             {/* Breadcrumb */}
             <div className="bg-white border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -246,7 +246,7 @@ export const SpaceDetailPage: React.FC = () => {
                                             <button
                                                 key={idx}
                                                 onClick={() => setCurrentImage(idx)}
-                                                className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                                                className={`shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
                                                     idx === currentImage
                                                         ? "border-primary scale-105 shadow-md"
                                                         : "border-gray-300 hover:border-primary/50 opacity-70 hover:opacity-100"
@@ -284,7 +284,7 @@ export const SpaceDetailPage: React.FC = () => {
 
                             {/* Ubicación */}
                             <div className="flex items-start space-x-3 mb-6 p-4 bg-gray-50 rounded-xl">
-                                <svg className="w-6 h-6 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-6 h-6 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
@@ -325,7 +325,7 @@ export const SpaceDetailPage: React.FC = () => {
                                         >
                                             <div className="flex items-start justify-between mb-3">
                                                 <div className="flex items-center space-x-3">
-                                                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-semibold">
+                                                    <div className="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-semibold">
                                                         U
                                                     </div>
                                                     <div>
@@ -361,7 +361,7 @@ export const SpaceDetailPage: React.FC = () => {
                         <div className="sticky top-24">
                             <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
                                 {/* Precio destacado */}
-                                <div className="mb-6 p-6 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl border border-primary/20">
+                                <div className="mb-6 p-6 bg-linear-to-br from-primary/5 to-secondary/5 rounded-xl border border-primary/20">
                                     <p className="text-sm text-gray-600 mb-1">Precio por hora</p>
                                     <p className="text-4xl font-bold text-primary">
                                         {space.price.format()}
@@ -371,19 +371,19 @@ export const SpaceDetailPage: React.FC = () => {
                                 {/* Características rápidas */}
                                 <div className="space-y-3 mb-6">
                                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                        <svg className="w-5 h-5 text-secondary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-5 h-5 text-secondary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                         <span className="text-sm text-gray-700">Reserva instantánea</span>
                                     </div>
                                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                        <svg className="w-5 h-5 text-secondary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-5 h-5 text-secondary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                         </svg>
                                         <span className="text-sm text-gray-700">Pago seguro</span>
                                     </div>
                                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                        <svg className="w-5 h-5 text-secondary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-5 h-5 text-secondary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                                         </svg>
                                         <span className="text-sm text-gray-700">Soporte 24/7</span>
@@ -394,7 +394,7 @@ export const SpaceDetailPage: React.FC = () => {
                                 {!isOwner ? (
                                     <Link
                                         to={`/rental/${space.id}`}
-                                        className="w-full block text-center px-6 py-4 bg-gradient-to-r from-secondary to-primary text-white rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                                        className="w-full block text-center px-6 py-4 bg-linear-to-r from-secondary to-primary text-white rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                                     >
                                         Reservar Ahora
                                     </Link>

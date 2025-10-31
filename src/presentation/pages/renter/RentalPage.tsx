@@ -26,7 +26,7 @@ export const SpaceRentalPage: React.FC = () => {
 
     if (!space) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center">
+            <div className="min-h-screen bg-linear-to-br from-gray-50 to-blue-50 flex items-center justify-center">
                 <div className="text-center">
                     <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                     <p className="text-gray-600 text-lg">Cargando espacio...</p>
@@ -73,7 +73,7 @@ export const SpaceRentalPage: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="min-h-screen bg-linear-to-br from-gray-50 to-blue-50">
             {/* Breadcrumb */}
             <div className="bg-white border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-6 py-4">
@@ -302,9 +302,9 @@ export const SpaceRentalPage: React.FC = () => {
                             </div>
 
                             {/* Help Card */}
-                            <div className="mt-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border border-blue-100">
+                            <div className="mt-6 bg-linear-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border border-blue-100">
                                 <div className="flex items-start">
-                                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 shrink-0">
                                         <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>

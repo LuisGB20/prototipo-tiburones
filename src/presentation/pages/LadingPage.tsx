@@ -176,7 +176,7 @@ export const LandingPage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Hero Section - Profesional y Corporativo */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-gray-900 via-gray-800 to-gray-900">
         {/* Background Image */}
         <div className="absolute inset-0 opacity-20">
           <img
@@ -493,7 +493,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* CTA Final */}
-      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden bg-linear-to-br from-gray-900 via-gray-800 to-gray-900">
         {/* Background */}
         <div className="absolute inset-0 opacity-10">
           <img
@@ -534,7 +534,7 @@ export const LandingPage: React.FC = () => {
 
           {/* Guarantee */}
           <div className="flex items-center justify-center gap-2 text-gray-400 px-4">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             <span className="text-xs sm:text-sm">Registro gratuito • Sin compromiso inicial</span>
@@ -580,7 +580,7 @@ export const LandingPage: React.FC = () => {
               <details key={index} className="group bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200 hover:border-primary transition-all cursor-pointer">
                 <summary className="flex items-center justify-between font-semibold text-gray-900 cursor-pointer list-none text-sm sm:text-base">
                   <span className="pr-4">{faq.q}</span>
-                  <svg className="w-5 h-5 text-primary group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-primary group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>

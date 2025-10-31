@@ -125,7 +125,7 @@ export const RenterDashboard: React.FC = () => {
                         <Link
                             key={space.id}
                             to={`/space/${space.id}`}
-                            className="flex-shrink-0 w-72 sm:w-80 bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden group border border-gray-200"
+                            className="shrink-0 w-72 sm:w-80 bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden group border border-gray-200"
                         >
                             <div className="relative h-48 overflow-hidden">
                                 <img 
@@ -153,7 +153,7 @@ export const RenterDashboard: React.FC = () => {
                                     {space.description}
                                 </p>
                                 <div className="flex items-center gap-2 text-sm text-gray-500">
-                                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
@@ -287,7 +287,7 @@ export const RenterDashboard: React.FC = () => {
                                 <div className="h-6 bg-gray-200 rounded w-48 mb-4"></div>
                                 <div className="flex gap-4 overflow-hidden">
                                     {[1, 2, 3].map(j => (
-                                        <div key={j} className="flex-shrink-0 w-72 bg-white rounded-xl shadow-sm overflow-hidden">
+                                        <div key={j} className="shrink-0 w-72 bg-white rounded-xl shadow-sm overflow-hidden">
                                             <div className="h-48 bg-gray-200"></div>
                                             <div className="p-4 space-y-3">
                                                 <div className="h-5 bg-gray-200 rounded w-3/4"></div>

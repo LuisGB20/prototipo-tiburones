@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { UserRole } from "../../../core/entities/User";
-import logo from "../../../assets/logo_SpaceShare.png";
 
 export const RegisterPage: React.FC = () => {
   const [name, setName] = useState("");
@@ -55,7 +54,7 @@ export const RegisterPage: React.FC = () => {
   return (
     <div className="min-h-screen flex">
       {/* Lado Izquierdo - Imagen Hero */}
-      <div className="hidden lg:flex flex-1 relative bg-gradient-to-br from-secondary via-primary to-secondary">
+      <div className="hidden lg:flex flex-1 relative bg-linear-to-br from-secondary via-primary to-secondary">
         <div className="absolute inset-0 bg-black/20"></div>
         <img
           src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1996&auto=format&fit=crop"
@@ -74,7 +73,7 @@ export const RegisterPage: React.FC = () => {
             {/* Features */}
             <div className="space-y-4 text-left">
               <div className="flex items-start space-x-4 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -86,7 +85,7 @@ export const RegisterPage: React.FC = () => {
               </div>
               
               <div className="flex items-start space-x-4 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
@@ -98,7 +97,7 @@ export const RegisterPage: React.FC = () => {
               </div>
               
               <div className="flex items-start space-x-4 bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
@@ -114,7 +113,7 @@ export const RegisterPage: React.FC = () => {
       </div>
 
       {/* Lado Derecho - Formulario */}
-      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 lg:p-12 bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 lg:p-12 bg-linear-to-br from-gray-50 to-gray-100">
         <div className="w-full max-w-md">
           {/* Logo y Header */}
           <div className="text-center mb-8">
@@ -133,7 +132,7 @@ export const RegisterPage: React.FC = () => {
               {/* Error Alert */}
               {error && (
                 <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start space-x-3 animate-in fade-in slide-in-from-top-2 duration-300">
-                  <svg className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-red-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                   </svg>
                   <p className="text-sm text-red-700">{error}</p>
@@ -353,7 +352,7 @@ export const RegisterPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 px-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full py-3 px-4 bg-linear-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center space-x-2">

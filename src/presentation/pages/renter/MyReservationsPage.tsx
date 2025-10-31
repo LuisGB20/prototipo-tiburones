@@ -276,14 +276,14 @@ export const MyReservationsPage: React.FC = () => {
                     {/* Dates Row - Compact */}
                     <div className="space-y-1.5 mb-3">
                       <div className="flex items-center text-sm text-gray-700">
-                        <svg className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 mr-2 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                         <span className="font-medium mr-2">Inicio:</span>
                         <span className="text-gray-600">{formatDateTime(new Date(rental.dateRange.start))}</span>
                       </div>
                       <div className="flex items-center text-sm text-gray-700">
-                        <svg className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 mr-2 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                         <span className="font-medium mr-2">Fin:</span>
@@ -457,7 +457,7 @@ export const MyReservationsPage: React.FC = () => {
                 </div>
 
                 {/* Total */}
-                <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6 mb-6">
+                <div className="bg-linear-to-r from-primary/10 to-secondary/10 rounded-xl p-6 mb-6">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-700 font-semibold">Total Pagado</span>
                     <span className="text-3xl font-bold text-primary">${selectedRental.totalCost} MXN</span>
@@ -507,7 +507,7 @@ export const MyReservationsPage: React.FC = () => {
                   <button
                     onClick={handleSubmitReview}
                     disabled={rating === 0}
-                    className="mt-4 w-full bg-gradient-to-r from-primary to-secondary text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="mt-4 w-full bg-linear-to-r from-primary to-secondary text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Guardar calificación
                   </button>
