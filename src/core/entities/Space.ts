@@ -2,22 +2,23 @@ import { SpaceLocation } from "../valueObjects/Location";
 import { Price } from "../valueObjects/Price";
 
 export enum SpaceType {
-    WALL = "Pared",
-    GARAGE = "Cochera",
-    ROOM = "Habitación",
-    HALL = "Salón",
-    STUDIO = "Estudio",
-    OFFICE = "Oficina",
-    WAREHOUSE = "Bodega",
-    TERRACE = "Terraza",
-    ROOFTOP = "Azotea",
-    GARDEN = "Jardín",
-    PARKING_SPOT = "Espacio de estacionamiento",
-    SHOP = "Local comercial",
-    EVENT_SPACE = "Espacio para eventos",
-    ADVERTISEMENT_SPOT = "Espacio publicitario",
-    OTHER = "Otro",
+    WALL = "WALL",
+    GARAGE = "GARAGE",
+    ROOM = "ROOM",
+    HALL = "HALL",
+    STUDIO = "STUDIO",
+    OFFICE = "OFFICE",
+    WAREHOUSE = "WAREHOUSE",
+    TERRACE = "TERRACE",
+    ROOFTOP = "ROOFTOP",
+    GARDEN = "GARDEN",
+    PARKING_SPOT = "PARKING_SPOT",
+    SHOP = "SHOP",
+    EVENT_SPACE = "EVENT_SPACE",
+    ADVERTISEMENT_SPOT = "ADVERTISEMENT_SPOT",
+    OTHER = "OTHER"
 }
+
 
 
 export class Space {

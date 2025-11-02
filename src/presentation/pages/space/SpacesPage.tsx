@@ -54,7 +54,7 @@ export const SpacesPage: React.FC = () => {
 
         // Type filter
         if (selectedType !== "all") {
-            result = result.filter(s => s.type === selectedType);
+            result = result.filter(s => s.type.toUpperCase() == selectedType.toUpperCase());
         }
 
         // City filter
@@ -124,7 +124,7 @@ export const SpacesPage: React.FC = () => {
             [SpaceType.ADVERTISEMENT_SPOT]: "Publicidad",
             [SpaceType.OTHER]: "Otro"
         };
-        return labels[type] || type;
+        return labels[type.toUpperCase() as SpaceType] || type;
     };
 
     // Agrupar espacios por tipo para vista de categorías

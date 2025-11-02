@@ -100,6 +100,27 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
         }
     };
 
+    const getSpaceTypeLabel = (type: SpaceType) => {
+        const labels: Record<SpaceType, string> = {
+            [SpaceType.WALL]: "Pared",
+            [SpaceType.GARAGE]: "Cochera",
+            [SpaceType.ROOM]: "Habitación",
+            [SpaceType.HALL]: "Salón",
+            [SpaceType.STUDIO]: "Estudio",
+            [SpaceType.OFFICE]: "Oficina",
+            [SpaceType.WAREHOUSE]: "Bodega",
+            [SpaceType.TERRACE]: "Terraza",
+            [SpaceType.ROOFTOP]: "Azotea",
+            [SpaceType.GARDEN]: "Jardín",
+            [SpaceType.PARKING_SPOT]: "Estacionamiento",
+            [SpaceType.SHOP]: "Local",
+            [SpaceType.EVENT_SPACE]: "Eventos",
+            [SpaceType.ADVERTISEMENT_SPOT]: "Publicidad",
+            [SpaceType.OTHER]: "Otro"
+        };
+        return labels[type.toUpperCase() as SpaceType] || type;
+    };
+
     const steps = [
         { number: 1, title: "Información Básica", icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
         { number: 2, title: "Ubicación y Precio", icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" },
@@ -117,11 +138,10 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                         {steps.map((step, index) => (
                             <React.Fragment key={step.number}>
                                 <div className="flex flex-col items-center flex-1">
-                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-300 ${
-                                        currentStep >= step.number
-                                            ? "bg-gradient-to-br from-primary to-secondary text-white shadow-lg scale-110"
+                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-300 ${currentStep >= step.number
+                                            ? "bg-linear-to-br from-primary to-secondary text-white shadow-lg scale-110"
                                             : "bg-gray-200 text-gray-600"
-                                    }`}>
+                                        }`}>
                                         {currentStep > step.number ? (
                                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -130,23 +150,21 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                                             step.number
                                         )}
                                     </div>
-                                    <span className={`text-xs mt-2 font-medium hidden sm:block ${
-                                        currentStep >= step.number ? "text-primary" : "text-gray-500"
-                                    }`}>
+                                    <span className={`text-xs mt-2 font-medium hidden sm:block ${currentStep >= step.number ? "text-primary" : "text-gray-500"
+                                        }`}>
                                         {step.title}
                                     </span>
                                 </div>
                                 {index < steps.length - 1 && (
-                                    <div className={`h-1 flex-1 mx-2 rounded transition-all duration-300 ${
-                                        currentStep > step.number ? "bg-gradient-to-r from-primary to-secondary" : "bg-gray-200"
-                                    }`} />
+                                    <div className={`h-1 flex-1 mx-2 rounded transition-all duration-300 ${currentStep > step.number ? "bg-linear-to-r from-primary to-secondary" : "bg-gray-200"
+                                        }`} />
                                 )}
                             </React.Fragment>
                         ))}
                     </div>
                     <div className="relative h-2 bg-gray-200 rounded-full overflow-hidden mb-8">
                         <div
-                            className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-secondary transition-all duration-500"
+                            className="absolute top-0 left-0 h-full bg-linear-to-r from-primary to-secondary transition-all duration-500"
                             style={{ width: `${progress}%` }}
                         />
                     </div>
@@ -179,9 +197,8 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                                 value={title}
                                 onChange={e => setTitle(e.target.value)}
                                 placeholder="Ej: Cochera céntrica en Zona Hotelera"
-                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${
-                                    errors.title ? "border-red-500" : "border-gray-300"
-                                }`}
+                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${errors.title ? "border-red-500" : "border-gray-300"
+                                    }`}
                             />
                             {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
                         </div>
@@ -196,9 +213,8 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                                 onChange={e => setDescription(e.target.value)}
                                 rows={5}
                                 placeholder="Describe las características, amenidades y beneficios de tu espacio..."
-                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none ${
-                                    errors.description ? "border-red-500" : "border-gray-300"
-                                }`}
+                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none ${errors.description ? "border-red-500" : "border-gray-300"
+                                    }`}
                             />
                             <div className="flex justify-between items-center mt-1">
                                 {errors.description ? (
@@ -219,12 +235,13 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                                     id="type"
                                     value={type}
                                     onChange={e => setType(e.target.value as SpaceType)}
-                                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none appearance-none ${
-                                        errors.type ? "border-red-500" : "border-gray-300"
-                                    }`}
+                                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none appearance-none ${errors.type ? "border-red-500" : "border-gray-300"
+                                        }`}
                                 >
                                     {Object.values(SpaceType).map(t => (
-                                        <option key={t} value={t}>{t}</option>
+                                        <option key={t} value={t}>{
+                                            getSpaceTypeLabel(t)
+                                        }</option>
                                     ))}
                                 </select>
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
@@ -270,9 +287,8 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                                         value={city}
                                         onChange={e => setCity(e.target.value)}
                                         placeholder="Cancún"
-                                        className={`w-full pl-12 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${
-                                            errors.city ? "border-red-500" : "border-gray-300"
-                                        }`}
+                                        className={`w-full pl-12 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${errors.city ? "border-red-500" : "border-gray-300"
+                                            }`}
                                     />
                                 </div>
                                 {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
@@ -295,9 +311,8 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                                         value={address}
                                         onChange={e => setAddress(e.target.value)}
                                         placeholder="Av. Tulum 123, Centro"
-                                        className={`w-full pl-12 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${
-                                            errors.address ? "border-red-500" : "border-gray-300"
-                                        }`}
+                                        className={`w-full pl-12 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${errors.address ? "border-red-500" : "border-gray-300"
+                                            }`}
                                     />
                                 </div>
                                 {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
@@ -319,9 +334,8 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                                     onChange={e => setPrice(Number(e.target.value))}
                                     placeholder="250"
                                     min="1"
-                                    className={`w-full pl-12 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${
-                                        errors.price ? "border-red-500" : "border-gray-300"
-                                    }`}
+                                    className={`w-full pl-12 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${errors.price ? "border-red-500" : "border-gray-300"
+                                        }`}
                                 />
                                 <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                                     <span className="text-gray-500 text-sm">MXN/hora</span>
@@ -366,7 +380,7 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                                 <button
                                     type="button"
                                     onClick={addImage}
-                                    className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200"
+                                    className="px-6 py-3 bg-linear-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200"
                                 >
                                     Agregar
                                 </button>
@@ -433,7 +447,7 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                         <button
                             type="button"
                             onClick={nextStep}
-                            className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200"
+                            className="flex items-center space-x-2 px-6 py-3 bg-linear-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200"
                         >
                             <span>Siguiente</span>
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -444,7 +458,7 @@ export const SpaceForm: React.FC<Props> = ({ onSubmit, initialData, isSubmitting
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                            className="flex items-center space-x-2 px-8 py-3 bg-linear-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                         >
                             {isSubmitting ? (
                                 <>

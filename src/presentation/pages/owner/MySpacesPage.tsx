@@ -107,6 +107,27 @@ export const MySpacesPage: React.FC = () => {
         fetchSpaces();
     };
 
+       const getSpaceTypeLabel = (type: SpaceType) => {
+            const labels: Record<SpaceType, string> = {
+                [SpaceType.WALL]: "Pared",
+                [SpaceType.GARAGE]: "Cochera",
+                [SpaceType.ROOM]: "Habitación",
+                [SpaceType.HALL]: "Salón",
+                [SpaceType.STUDIO]: "Estudio",
+                [SpaceType.OFFICE]: "Oficina",
+                [SpaceType.WAREHOUSE]: "Bodega",
+                [SpaceType.TERRACE]: "Terraza",
+                [SpaceType.ROOFTOP]: "Azotea",
+                [SpaceType.GARDEN]: "Jardín",
+                [SpaceType.PARKING_SPOT]: "Estacionamiento",
+                [SpaceType.SHOP]: "Local",
+                [SpaceType.EVENT_SPACE]: "Eventos",
+                [SpaceType.ADVERTISEMENT_SPOT]: "Publicidad",
+                [SpaceType.OTHER]: "Otro"
+            };
+            return labels[type.toUpperCase() as SpaceType] || type;
+        };
+
     return (
         <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -176,7 +197,9 @@ export const MySpacesPage: React.FC = () => {
                             >
                                 <option value="all">Todos los tipos</option>
                                 {Object.values(SpaceType).map((type) => (
-                                    <option key={type} value={type}>{type}</option>
+                                    <option key={type} value={type}>{
+                                        getSpaceTypeLabel(type)
+                                    }</option>
                                 ))}
                             </select>
                         </div>
